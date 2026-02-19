@@ -38,7 +38,7 @@ export default function Home() {
           </div>
 
           <p className="animate-fade-in-up-delay-1 mt-8 text-cream/80 text-lg md:text-xl tracking-[0.2em] uppercase font-light max-w-xl">
-            Elevated Charcuterie &middot; Middle Eastern Flair
+            Luxury Charcuterie &middot; Middle Eastern Flair
           </p>
 
           <Link
@@ -193,7 +193,7 @@ export default function Home() {
             Let&apos;s Create Something Special
           </p>
           <h2 className="font-serif text-4xl md:text-6xl text-charcoal mb-6">
-            Elevate Your Event
+            Transform Your Event
           </h2>
           <div className="gold-separator mx-auto mb-8" />
           <p className="text-charcoal/60 text-lg leading-relaxed mb-10">

@@ -33,7 +33,7 @@ export default function AboutPage() {
               </p>
               <p className="text-cream/70 leading-relaxed text-lg mb-6">
                 From grape leaves and hummus to handcrafted slushes topped with
-                edible flowers, every board and every sip is curated to elevate
+                edible flowers, every board and every sip is curated to turn
                 your event into something truly unforgettable.
               </p>
               <p className="text-cream/70 leading-relaxed text-lg mb-10">
@@ -89,7 +89,7 @@ export default function AboutPage() {
               </p>
               <p className="text-charcoal/60 leading-relaxed text-lg">
                 Perfect for weddings, corporate events, birthdays, baby showers,
-                or any gathering that deserves an elevated touch.
+                or any gathering that deserves a luxurious touch.
               </p>
             </div>
 
@@ -142,7 +142,7 @@ export default function AboutPage() {
               },
               {
                 title: "Elegance",
-                desc: "From marble and gold finishes to meticulously arranged spreads, we elevate every detail to luxury standards.",
+                desc: "From marble and gold finishes to meticulously arranged spreads, we refine every detail to the highest standards.",
               },
               {
                 title: "Quality",

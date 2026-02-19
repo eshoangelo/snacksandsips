@@ -4,9 +4,9 @@ import Footer from "@/components/Footer";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Snacks & Sips | Elevated Charcuterie with Middle Eastern Flair",
+  title: "Snacks & Sips | Luxury Charcuterie with Middle Eastern Flair",
   description:
-    "Luxury charcuterie boards and handcrafted drinks with a nostalgic Middle Eastern twist. Elevating every gathering with artisanal snacks and refreshing sips.",
+    "Luxury charcuterie boards and handcrafted drinks with a nostalgic Middle Eastern twist. Transforming every gathering with artisanal snacks and refreshing sips.",
 };
 
 export default function RootLayout({

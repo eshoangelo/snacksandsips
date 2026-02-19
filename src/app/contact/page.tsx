@@ -5,7 +5,7 @@ export default function ContactPage() {
     <>
       <PageHeader
         subtitle="Let's Create Something Special"
-        title="Elevate"
+        title="Transform"
         titleAccent="Your Event"
       />
 
