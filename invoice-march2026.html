@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Invoice – Snacks & Sips – March 2026</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      font-size: 10pt;
+      color: #000;
+      background: #fff;
+      line-height: 1.5;
+    }
+
+    .doc { width: 750px; margin: 0 auto; padding: 40pt 52pt; }
+
+    /* Header */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 30pt;
+      padding-bottom: 16pt;
+      border-bottom: 2px solid #000;
+    }
+    .header img { height: 70px; width: auto; }
+    .header-right { text-align: right; }
+    .header-right h1 { font-size: 22pt; font-weight: 700; letter-spacing: 0.05em; margin-bottom: 4pt; }
+    .header-right p { font-size: 9pt; color: #555; }
+
+    /* Bill to / From */
+    .parties {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20pt;
+      margin-bottom: 24pt;
+    }
+    .party label { font-size: 8pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #777; display: block; margin-bottom: 4pt; }
+    .party p { font-size: 10pt; line-height: 1.6; }
+    .party strong { font-size: 11pt; }
+
+    /* Invoice details row */
+    .invoice-meta {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border: 1px solid #ccc;
+      margin-bottom: 20pt;
+    }
+    .invoice-meta-item {
+      padding: 8pt 12pt;
+      border-right: 1px solid #ccc;
+    }
+    .invoice-meta-item:last-child { border-right: none; }
+    .invoice-meta-item label { font-size: 8pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #777; display: block; margin-bottom: 2pt; }
+    .invoice-meta-item p { font-size: 10pt; font-weight: 600; }
+
+    /* Line items table */
+    .items-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 16pt;
+    }
+    .items-table thead tr {
+      background: #1a1a1a;
+      color: #fff;
+    }
+    .items-table thead td {
+      padding: 7pt 10pt;
+      font-size: 8.5pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .items-table tbody tr { border-bottom: 1px solid #e8e8e8; }
+    .items-table tbody td { padding: 9pt 10pt; font-size: 10pt; vertical-align: top; }
+    .items-table tbody tr:nth-child(even) { background: #fafafa; }
+    .items-table .col-qty { width: 60px; text-align: center; }
+    .items-table .col-rate { width: 100px; text-align: right; }
+    .items-table .col-amount { width: 100px; text-align: right; font-weight: 600; }
+
+    /* Totals */
+    .totals {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 24pt;
+    }
+    .totals-box { width: 240px; }
+    .totals-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 4pt 0;
+      font-size: 10pt;
+      border-bottom: 1px solid #eee;
+    }
+    .totals-row.total {
+      border-bottom: 2px solid #000;
+      border-top: 2px solid #000;
+      padding: 7pt 0;
+      font-weight: 700;
+      font-size: 12pt;
+      margin-top: 4pt;
+    }
+
+    /* Notes */
+    .notes {
+      border-top: 1px solid #ccc;
+      padding-top: 12pt;
+      font-size: 8.5pt;
+      color: #555;
+    }
+    .notes strong { color: #000; }
+
+    /* Due badge */
+    .due-badge {
+      display: inline-block;
+      background: #1a1a1a;
+      color: #fff;
+      font-size: 8pt;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 3pt 8pt;
+      margin-top: 4pt;
+    }
+
+    @media print {
+      body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      @page { margin: 0; size: letter; }
+    }
+  </style>
+</head>
+<body>
+<div class="doc">
+
+  <!-- Header -->
+  <div class="header">
+    <img src="/Users/angeloesho/Library/Mobile Documents/com~apple~CloudDocs/Businesses/IronCloudSolution/Logo/ironCloudSolutionsLogo.png" alt="IronCloud Solution LLC" />
+    <div class="header-right">
+      <h1>INVOICE</h1>
+      <p>IronCloud Solution LLC</p>
+    </div>
+  </div>
+
+  <!-- Parties -->
+  <div class="parties">
+    <div class="party">
+      <label>From</label>
+      <strong>IronCloud Solution LLC</strong>
+    </div>
+    <div class="party">
+      <label>Bill To</label>
+      <strong>Snacks &amp; Sips</strong>
+    </div>
+  </div>
+
+  <!-- Invoice Meta -->
+  <div class="invoice-meta">
+    <div class="invoice-meta-item">
+      <label>Invoice #</label>
+      <p>INV-001</p>
+    </div>
+    <div class="invoice-meta-item">
+      <label>Invoice Date</label>
+      <p>March 1, 2026</p>
+    </div>
+    <div class="invoice-meta-item">
+      <label>Due Date</label>
+      <p>March 1, 2026</p>
+    </div>
+  </div>
+
+  <!-- Line Items -->
+  <table class="items-table">
+    <thead>
+      <tr>
+        <td>Description</td>
+        <td class="col-qty">Qty</td>
+        <td class="col-rate">Rate</td>
+        <td class="col-amount">Amount</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <strong>Website Maintenance &amp; Hosting</strong><br />
+          <span style="font-size:8.5pt; color:#555;">Monthly retainer — March 2026. Includes hosting, content updates, design changes, bug fixes, and priority support.</span>
+        </td>
+        <td class="col-qty">1</td>
+        <td class="col-rate">$125.00</td>
+        <td class="col-amount">$125.00</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Totals -->
+  <div class="totals">
+    <div class="totals-box">
+      <div class="totals-row">
+        <span>Subtotal</span>
+        <span>$125.00</span>
+      </div>
+      <div class="totals-row">
+        <span>Tax</span>
+        <span>$0.00</span>
+      </div>
+      <div class="totals-row total">
+        <span>Total Due</span>
+        <span>$125.00</span>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+</body>
+</html>

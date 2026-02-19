@@ -37,8 +37,11 @@ export default function Home() {
             </h1>
           </div>
 
-          <p className="animate-fade-in-up-delay-1 mt-8 text-cream/80 text-lg md:text-xl tracking-[0.2em] uppercase font-light max-w-xl">
-            Luxury Charcuterie &middot; Middle Eastern Flair
+          <p
+            className="animate-fade-in-up-delay-1 mt-8 text-lg md:text-xl tracking-[0.2em] uppercase font-light max-w-xl gold-shimmer"
+            style={{ textShadow: "0 0 18px rgba(201,168,76,0.6), 0 0 40px rgba(201,168,76,0.3)" }}
+          >
+            Luxury Charcuterie &middot; Frozen Cocktails &amp; Mocktails
           </p>
 
           <Link
@@ -158,9 +161,9 @@ export default function Home() {
 
           <div className="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory md:justify-center scrollbar-hide">
             {[
-              { src: "/images/pink-strawberry-slush.png", title: "Strawberry Rose" },
-              { src: "/images/blue-mango-cup.png", title: "Blue Mango" },
-              { src: "/images/pistachio-caramel-cup.png", title: "Pistachio Caramel" },
+              { src: "/images/pink-strawberry-slush.png", title: "Raspberry Fros\u00e9" },
+              { src: "/images/blue-mango-cup.png", title: "Blue Lagoon" },
+              { src: "/images/pistachio-caramel-cup.png", title: "Pistachio Latte" },
             ].map((d, i) => (
               <div key={i} className="min-w-[200px] snap-center">
                 <div className="overflow-hidden h-64">

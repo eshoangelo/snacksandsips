@@ -98,6 +98,14 @@ html {
   );
 }
 
+/* Gold glow on all gold-colored text */
+.text-gold,
+.text-gold-dark {
+  text-shadow:
+    0 0 12px rgba(201, 168, 76, 0.55),
+    0 0 30px rgba(201, 168, 76, 0.25);
+}
+
 /* Decorative separator */
 .gold-separator {
   width: 80px;
