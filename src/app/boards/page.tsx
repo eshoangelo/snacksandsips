@@ -3,90 +3,195 @@ import Link from "next/link";
 import PageHeader from "@/components/PageHeader";
 
 export default function BoardsPage() {
-  const boards = [
-    {
-      src: "/images/charcuterie-board-closeup.jpg",
-      title: "The Classic",
-      desc: "Artisan cheeses, cured meats, fresh fruits, honey, nuts & handmade crackers — all beautifully arranged on a rustic wooden board.",
-      items: ["Brie & Gouda", "Salami & Prosciutto", "Fresh Berries", "Honey Jar", "Mixed Nuts", "Artisan Crackers"],
-    },
-    {
-      src: "/images/middleeasterboards.png",
-      title: "The Middle Eastern",
-      desc: "A nostalgic spread inspired by Arab hospitality — grape leaves, hummus, labneh with za'atar, olives, pita bread & pickled turnips.",
-      items: ["Grape Leaves", "Hummus & Labneh", "Za'atar", "Olives & Pickles", "Warm Pita", "Breadsticks"],
-    },
-    {
-      src: "/images/valentineboard.png",
-      title: "The Seasonal",
-      desc: "Themed boards crafted for every occasion — Valentine's Day, Ramadan, holidays & celebrations, each with unique seasonal touches.",
-      items: ["Seasonal Fruits", "Themed Sweets", "Chocolate Truffles", "Decorated Cookies", "Specialty Nuts", "Candy Hearts"],
-    },
-  ];
-
   return (
     <>
       <PageHeader subtitle="Curated With Care" title="The Boards" />
 
-      {/* ───── Board Cards ───── */}
+      {/* ───── Classic Charcuterie ───── */}
       <section className="py-20 md:py-28 marble-bg">
-        <div className="max-w-7xl mx-auto px-6 space-y-24">
-          {boards.map((board, i) => (
-            <div
-              key={i}
-              className={`grid md:grid-cols-2 gap-12 items-center ${
-                i % 2 === 1 ? "md:direction-rtl" : ""
-              }`}
-            >
-              <div className={`overflow-hidden ${i % 2 === 1 ? "md:order-2" : ""}`}>
-                <Image
-                  src={board.src}
-                  alt={board.title}
-                  width={600}
-                  height={500}
-                  className="w-full h-[400px] md:h-[500px] object-cover"
-                />
-              </div>
-              <div className={i % 2 === 1 ? "md:order-1" : ""}>
-                <h2 className="font-serif text-4xl text-charcoal mb-4">
-                  {board.title}
-                </h2>
-                <div className="w-12 h-[1px] bg-gold mb-6" />
-                <p className="text-charcoal/60 leading-relaxed text-lg mb-8">
-                  {board.desc}
-                </p>
-                <div className="grid grid-cols-2 gap-3">
-                  {board.items.map((item, j) => (
-                    <div
-                      key={j}
-                      className="flex items-center gap-3 text-charcoal/70"
-                    >
-                      <div className="w-1.5 h-1.5 bg-gold rounded-full flex-shrink-0" />
-                      <span className="text-sm">{item}</span>
-                    </div>
-                  ))}
-                </div>
+        <div className="max-w-7xl mx-auto px-6">
+
+          {/* Section Label */}
+          <div className="text-center mb-16">
+            <p className="text-gold-dark tracking-[0.3em] uppercase text-sm mb-3">
+              The Classics
+            </p>
+            <h2 className="font-serif text-4xl md:text-5xl text-charcoal mb-4">
+              Classic Charcuterie Boards
+            </h2>
+            <div className="gold-separator mx-auto mb-6" />
+            <p className="text-charcoal/60 leading-relaxed text-lg max-w-2xl mx-auto">
+              Artfully arranged meats, cheeses, nuts, fresh fruit & veggies, and gourmet
+              accompaniments, beautifully styled and paired with indulgent dipping options
+              for a luxurious grazing experience — providing both high quantity and quality.
+            </p>
+            <p className="mt-4 inline-block border border-gold/40 text-gold-dark tracking-[0.15em] uppercase text-xs px-5 py-2">
+              Halal Options Available
+            </p>
+          </div>
+
+          {/* Board Image + Items */}
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="overflow-hidden">
+              <Image
+                src="/images/charcuterie-board-closeup.jpg"
+                alt="Classic Charcuterie Board"
+                width={600}
+                height={500}
+                className="w-full h-[400px] md:h-[500px] object-cover"
+              />
+            </div>
+            <div>
+              <h3 className="font-serif text-2xl text-charcoal mb-3">What&apos;s Included</h3>
+              <div className="w-10 h-[1px] bg-gold mb-6" />
+              <div className="grid grid-cols-2 gap-3">
+                {[
+                  "Artisan Cheeses",
+                  "Cured Meats",
+                  "Fresh Fruit & Veggies",
+                  "Gourmet Nuts",
+                  "Honey & Preserves",
+                  "Artisan Crackers",
+                  "Indulgent Dipping Options",
+                  "Beautiful Styling & Garnishes",
+                ].map((item, i) => (
+                  <div key={i} className="flex items-center gap-3 text-charcoal/70">
+                    <div className="w-1.5 h-1.5 bg-gold rounded-full flex-shrink-0" />
+                    <span className="text-sm">{item}</span>
+                  </div>
+                ))}
               </div>
             </div>
-          ))}
+          </div>
         </div>
       </section>
 
-      {/* ───── Three Boards Lineup ───── */}
-      <section className="py-20 md:py-28 bg-charcoal">
+      {/* ───── Taste of Back Home ───── */}
+      <section className="py-20 md:py-28 bg-charcoal relative">
+        <div
+          className="absolute inset-0 opacity-[0.03]"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a84c' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          }}
+        />
+
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+
+          {/* Section Label */}
+          <div className="text-center mb-16">
+            <p className="text-gold-dark tracking-[0.3em] uppercase text-sm mb-3">
+              A Tribute to Tradition
+            </p>
+            <h2 className="font-serif text-4xl md:text-5xl text-cream mb-4">
+              Taste of Back Home
+            </h2>
+            <div className="gold-separator mx-auto mb-6" />
+            <p className="text-cream/50 leading-relaxed text-lg max-w-2xl mx-auto">
+              A celebration of Middle Eastern heritage — every ingredient either
+              authentically imported or fresh made from locally sourced produce.
+            </p>
+          </div>
+
+          {/* Savory */}
+          <div className="grid md:grid-cols-2 gap-12 items-center mb-20">
+            <div className="overflow-hidden">
+              <Image
+                src="/images/middleeasterboards.png"
+                alt="Taste of Back Home – Savory"
+                width={600}
+                height={500}
+                className="w-full h-[400px] md:h-[500px] object-cover"
+              />
+            </div>
+            <div>
+              <p className="text-gold-dark tracking-[0.25em] uppercase text-xs mb-3">
+                Taste of Back Home
+              </p>
+              <h3 className="font-serif text-3xl text-cream mb-4">
+                Savory
+              </h3>
+              <div className="w-10 h-[1px] bg-gold mb-6" />
+              <p className="text-cream/60 leading-relaxed text-lg mb-8">
+                A rich spread of traditional Middle Eastern flavors, featuring bold,
+                savory bites and authentic dips layered with comfort and depth.
+              </p>
+              <div className="grid grid-cols-2 gap-3">
+                {[
+                  "Grape Leaves",
+                  "Hummus & Labneh",
+                  "Za\u2019atar & Olive Oil",
+                  "Olives & Pickled Turnips",
+                  "Warm Pita",
+                  "Authentic Imported Dips",
+                ].map((item, i) => (
+                  <div key={i} className="flex items-center gap-3 text-cream/60">
+                    <div className="w-1.5 h-1.5 bg-gold rounded-full flex-shrink-0" />
+                    <span className="text-sm">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Sweet */}
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="overflow-hidden md:order-2">
+              <Image
+                src="/images/boards.png"
+                alt="Taste of Back Home – Sweet"
+                width={600}
+                height={500}
+                className="w-full h-[400px] md:h-[500px] object-cover"
+              />
+            </div>
+            <div className="md:order-1">
+              <p className="text-gold-dark tracking-[0.25em] uppercase text-xs mb-3">
+                Taste of Back Home
+              </p>
+              <h3 className="font-serif text-3xl text-cream mb-4">
+                Sweet
+              </h3>
+              <div className="w-10 h-[1px] bg-gold mb-6" />
+              <p className="text-cream/60 leading-relaxed text-lg mb-8">
+                A beautifully styled selection of nostalgic Middle Eastern sweets
+                & fruits, served with creamy, indulgent dips that elevate every bite.
+              </p>
+              <div className="grid grid-cols-2 gap-3">
+                {[
+                  "Middle Eastern Sweets",
+                  "Fresh Seasonal Fruits",
+                  "Creamy Indulgent Dips",
+                  "Imported Specialty Items",
+                  "Dates & Dried Fruits",
+                  "Beautiful Styling & Garnishes",
+                ].map((item, i) => (
+                  <div key={i} className="flex items-center gap-3 text-cream/60">
+                    <div className="w-1.5 h-1.5 bg-gold rounded-full flex-shrink-0" />
+                    <span className="text-sm">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* ───── Custom Boards CTA ───── */}
+      <section className="py-20 md:py-28 marble-bg">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <p className="text-gold tracking-[0.3em] uppercase text-sm mb-4">
                 For Every Occasion
               </p>
-              <h2 className="font-serif text-4xl md:text-5xl text-white mb-6 leading-tight">
+              <h2 className="font-serif text-4xl md:text-5xl text-charcoal mb-6 leading-tight">
                 Custom Boards
                 <br />
                 <span className="text-gold italic">Made for You</span>
               </h2>
               <div className="gold-separator mb-6" />
-              <p className="text-cream/70 leading-relaxed text-lg mb-8">
+              <p className="text-charcoal/60 leading-relaxed text-lg mb-8">
                 Every event is different, and so is every board. We work with
                 you to craft the perfect spread — tailored to your theme, your
                 tastes, and your guest count.

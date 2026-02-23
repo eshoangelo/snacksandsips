@@ -25,21 +25,22 @@ export default function AboutPage() {
 
             <div>
               <p className="text-cream/70 leading-relaxed text-lg mb-6">
-                Snacks &amp; Sips was born from a love of gathering, great food,
-                and the rich flavors of Middle Eastern heritage. We bring a fresh
-                take on the traditional charcuterie experience — blending
-                hand-selected artisanal ingredients with the nostalgic tastes of
-                Arab culture.
+                Snacks &amp; Sips was created to bring a high end, beautifully
+                styled food and drink experience to every event. We specialize in
+                premium charcuterie style cuisine and handcrafted frozen beverages
+                made with quality ingredients, intentional detail, and refined
+                presentation.
               </p>
               <p className="text-cream/70 leading-relaxed text-lg mb-6">
-                From grape leaves and hummus to handcrafted slushes topped with
-                edible flowers, every board and every sip is curated to turn
-                your event into something truly unforgettable.
+                With subtle Middle Eastern influence woven into select offerings,
+                our menu blends tradition and creativity for a unique yet
+                approachable experience. Everything we serve reflects our
+                commitment to excellence, hospitality, and being a God centered
+                business rooted in integrity and gratitude.
               </p>
               <p className="text-cream/70 leading-relaxed text-lg mb-10">
-                What sets us apart isn&apos;t just the quality — it&apos;s the soul behind
-                every spread. Each board carries the warmth of home, the elegance
-                of luxury, and the authenticity of Arab hospitality.
+                From intimate gatherings to large celebrations, we focus on
+                delivering luxury you can taste and presentation you won&apos;t forget.
               </p>
 
               <div className="flex gap-12">
@@ -56,9 +57,9 @@ export default function AboutPage() {
                   </p>
                 </div>
                 <div>
-                  <span className="font-serif text-3xl text-gold">Arab</span>
+                  <span className="font-serif text-3xl text-gold">Faith</span>
                   <p className="text-cream/50 text-sm mt-1 tracking-wider uppercase">
-                    Inspired
+                    Centered
                   </p>
                 </div>
               </div>
@@ -78,7 +79,7 @@ export default function AboutPage() {
               <h2 className="font-serif text-4xl md:text-5xl text-charcoal mb-6 leading-tight">
                 More Than Just
                 <br />
-                <span className="text-gold-dark italic">a Snack</span>
+                <span className="text-gold-dark italic">a Snack or a Sip</span>
               </h2>
               <div className="gold-separator mb-8" />
               <p className="text-charcoal/60 leading-relaxed text-lg mb-6">
@@ -93,7 +94,7 @@ export default function AboutPage() {
               </p>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-3 gap-4">
               <div className="overflow-hidden h-64 md:h-80">
                 <video
                   autoPlay
@@ -114,6 +115,17 @@ export default function AboutPage() {
                   className="w-full h-full object-cover"
                 >
                   <source src="/videos/MiddleEasternBoards.mov" type="video/mp4" />
+                </video>
+              </div>
+              <div className="overflow-hidden h-64 md:h-80">
+                <video
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  className="w-full h-full object-cover"
+                >
+                  <source src="/videos/PinkDrink.mov" type="video/mp4" />
                 </video>
               </div>
             </div>
@@ -137,8 +149,8 @@ export default function AboutPage() {
           <div className="grid md:grid-cols-3 gap-10">
             {[
               {
-                title: "Heritage",
-                desc: "Every board tells a story rooted in Arab tradition — grape leaves, za'atar, dates, and the warmth of shared meals.",
+                title: "Integrity",
+                desc: "We are a God centered business built on honesty, gratitude, and a genuine commitment to serving our clients well.",
               },
               {
                 title: "Elegance",
