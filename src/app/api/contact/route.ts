@@ -4,7 +4,22 @@ import { NextResponse } from "next/server";
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req: Request) {
-  const { name, email, eventType, eventDate, message } = await req.json();
+  const { name, email, eventType, eventDate, partySize, menuSelection, message } = await req.json();
+
+  const menuLabels: Record<string, string> = {
+    "halal": "Halal",
+    "taste-of-back-home-savory": "Taste of Back Home Savory",
+    "taste-of-back-home-sweet": "Taste of Back Home Sweet",
+    "frozen-cocktails-mocktails": "Frozen Cocktails/Mocktails",
+  };
+  const eventTypeLabels: Record<string, string> = {
+    "wedding": "Wedding",
+    "corporate": "Corporate Event",
+    "birthday": "Birthday Party",
+    "baby-shower": "Baby Shower",
+    "ramadan": "Ramadan Gathering",
+    "other": "Other",
+  };
 
   const { error } = await resend.emails.send({
     from: "Snacks & Sips <snacksnsips@ironcloudsolution.com>",
@@ -69,7 +84,7 @@ export async function POST(req: Request) {
                       <tr>
                         <td style="padding:14px 0;border-bottom:1px solid #2a2a2a;">
                           <p style="margin:0 0 4px;font-family:Arial,sans-serif;font-size:10px;letter-spacing:0.2em;color:#c9a84c;text-transform:uppercase;">Event Type</p>
-                          <p style="margin:0;font-family:Georgia,serif;font-size:16px;color:#f5f0e8;">${eventType || "Not specified"}</p>
+                          <p style="margin:0;font-family:Georgia,serif;font-size:16px;color:#f5f0e8;">${eventTypeLabels[eventType] || eventType || "Not specified"}</p>
                         </td>
                       </tr>
 
@@ -78,6 +93,22 @@ export async function POST(req: Request) {
                         <td style="padding:14px 0;border-bottom:1px solid #2a2a2a;">
                           <p style="margin:0 0 4px;font-family:Arial,sans-serif;font-size:10px;letter-spacing:0.2em;color:#c9a84c;text-transform:uppercase;">Event Date</p>
                           <p style="margin:0;font-family:Georgia,serif;font-size:16px;color:#f5f0e8;">${eventDate || "Not specified"}</p>
+                        </td>
+                      </tr>
+
+                      <!-- Party Size -->
+                      <tr>
+                        <td style="padding:14px 0;border-bottom:1px solid #2a2a2a;">
+                          <p style="margin:0 0 4px;font-family:Arial,sans-serif;font-size:10px;letter-spacing:0.2em;color:#c9a84c;text-transform:uppercase;">Number of People in Party</p>
+                          <p style="margin:0;font-family:Georgia,serif;font-size:16px;color:#f5f0e8;">${partySize || "Not specified"}</p>
+                        </td>
+                      </tr>
+
+                      <!-- Menu Selection -->
+                      <tr>
+                        <td style="padding:14px 0;border-bottom:1px solid #2a2a2a;">
+                          <p style="margin:0 0 4px;font-family:Arial,sans-serif;font-size:10px;letter-spacing:0.2em;color:#c9a84c;text-transform:uppercase;">Menu</p>
+                          <p style="margin:0;font-family:Georgia,serif;font-size:16px;color:#f5f0e8;">${menuLabels[menuSelection] || menuSelection || "Not specified"}</p>
                         </td>
                       </tr>
 

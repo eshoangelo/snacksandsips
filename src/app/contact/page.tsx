@@ -9,6 +9,8 @@ export default function ContactPage() {
     email: "",
     eventType: "",
     eventDate: "",
+    partySize: "",
+    menuSelection: "",
     message: "",
   });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
@@ -21,6 +23,8 @@ export default function ContactPage() {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) return;
+    if (parseInt(form.partySize) < 50) return;
     setStatus("loading");
 
     const res = await fetch("/api/contact", {
@@ -87,43 +91,99 @@ export default function ContactPage() {
                       required
                       value={form.email}
                       onChange={handleChange}
-                      className="w-full border-b border-charcoal/20 bg-transparent py-3 text-charcoal focus:border-gold focus:outline-none transition-colors"
+                      className={`w-full border-b bg-transparent py-3 text-charcoal focus:outline-none transition-colors ${
+                        form.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)
+                          ? "border-red-400 focus:border-red-400"
+                          : "border-charcoal/20 focus:border-gold"
+                      }`}
                       placeholder="your@email.com"
                     />
+                    {form.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email) && (
+                      <p className="text-red-400 text-xs mt-1">Please enter a valid email address.</p>
+                    )}
                   </div>
                 </div>
 
-                <div>
-                  <label className="block text-charcoal/60 text-sm tracking-wider uppercase mb-2">
-                    Event Type
-                  </label>
-                  <select
-                    name="eventType"
-                    value={form.eventType}
-                    onChange={handleChange}
-                    className="w-full border-b border-charcoal/20 bg-transparent py-3 text-charcoal focus:border-gold focus:outline-none transition-colors"
-                  >
-                    <option value="">Select an event type</option>
-                    <option value="wedding">Wedding</option>
-                    <option value="corporate">Corporate Event</option>
-                    <option value="birthday">Birthday Party</option>
-                    <option value="baby-shower">Baby Shower</option>
-                    <option value="ramadan">Ramadan Gathering</option>
-                    <option value="other">Other</option>
-                  </select>
+                {/* Row 2: inputs — Event Date | Party Size */}
+                <div className="grid sm:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-charcoal/60 text-sm tracking-wider uppercase mb-2">
+                      Event Date
+                    </label>
+                    <input
+                      type="date"
+                      name="eventDate"
+                      value={form.eventDate}
+                      onChange={handleChange}
+                      className="w-full border-b border-charcoal/20 bg-transparent py-3 text-charcoal focus:border-gold focus:outline-none transition-colors"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-charcoal/60 text-sm tracking-wider uppercase mb-2">
+                      Number of People in Party
+                    </label>
+                    <input
+                      type="number"
+                      name="partySize"
+                      required
+                      min={50}
+                      value={form.partySize}
+                      onChange={handleChange}
+                      onKeyDown={(e) => {
+                        if (["e", "E", "+", "-", "."].includes(e.key)) e.preventDefault();
+                      }}
+                      className={`w-full border-b bg-transparent py-3 text-charcoal focus:outline-none transition-colors [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none ${
+                        form.partySize && parseInt(form.partySize) < 50
+                          ? "border-red-400 focus:border-red-400"
+                          : "border-charcoal/20 focus:border-gold"
+                      }`}
+                      placeholder="Minimum 50"
+                    />
+                    {form.partySize && parseInt(form.partySize) < 50 && (
+                      <p className="text-red-400 text-xs mt-1">Minimum party size is 50.</p>
+                    )}
+                  </div>
                 </div>
 
-                <div>
-                  <label className="block text-charcoal/60 text-sm tracking-wider uppercase mb-2">
-                    Event Date
-                  </label>
-                  <input
-                    type="date"
-                    name="eventDate"
-                    value={form.eventDate}
-                    onChange={handleChange}
-                    className="w-full border-b border-charcoal/20 bg-transparent py-3 text-charcoal focus:border-gold focus:outline-none transition-colors"
-                  />
+                {/* Row 3: dropdowns — Event Type | Menu */}
+                <div className="grid sm:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-charcoal/60 text-sm tracking-wider uppercase mb-2">
+                      Event Type
+                    </label>
+                    <select
+                      name="eventType"
+                      value={form.eventType}
+                      onChange={handleChange}
+                      className="w-full border-b border-charcoal/20 bg-transparent py-3 text-charcoal focus:border-gold focus:outline-none transition-colors"
+                    >
+                      <option value="">Select an event type</option>
+                      <option value="wedding">Wedding</option>
+                      <option value="corporate">Corporate Event</option>
+                      <option value="birthday">Birthday Party</option>
+                      <option value="baby-shower">Baby Shower</option>
+                      <option value="ramadan">Ramadan Gathering</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-charcoal/60 text-sm tracking-wider uppercase mb-2">
+                      Menu
+                    </label>
+                    <select
+                      name="menuSelection"
+                      required
+                      value={form.menuSelection}
+                      onChange={handleChange}
+                      className="w-full border-b border-charcoal/20 bg-transparent py-3 text-charcoal focus:border-gold focus:outline-none transition-colors"
+                    >
+                      <option value="">Select a menu</option>
+                      <option value="halal">Halal</option>
+                      <option value="taste-of-back-home-savory">Taste of Back Home Savory</option>
+                      <option value="taste-of-back-home-sweet">Taste of Back Home Sweet</option>
+                      <option value="frozen-cocktails-mocktails">Frozen Cocktails/Mocktails</option>
+                    </select>
+                  </div>
                 </div>
 
                 <div>
