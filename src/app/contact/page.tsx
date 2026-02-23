@@ -1,6 +1,37 @@
+"use client";
+
+import { useState } from "react";
 import PageHeader from "@/components/PageHeader";
 
 export default function ContactPage() {
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    eventType: "",
+    eventDate: "",
+    message: "",
+  });
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+
+  function handleChange(
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) {
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  }
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setStatus("loading");
+
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(form),
+    });
+
+    setStatus(res.ok ? "success" : "error");
+  }
+
   return (
     <>
       <PageHeader
@@ -25,75 +56,108 @@ export default function ContactPage() {
             </h3>
             <div className="gold-separator mx-auto mb-10" />
 
-            <form className="space-y-6">
-              <div className="grid sm:grid-cols-2 gap-6">
+            {status === "success" ? (
+              <p className="text-center text-charcoal/70 text-lg py-8">
+                Thank you! We&apos;ll be in touch soon.
+              </p>
+            ) : (
+              <form className="space-y-6" onSubmit={handleSubmit}>
+                <div className="grid sm:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-charcoal/60 text-sm tracking-wider uppercase mb-2">
+                      Name
+                    </label>
+                    <input
+                      type="text"
+                      name="name"
+                      required
+                      value={form.name}
+                      onChange={handleChange}
+                      className="w-full border-b border-charcoal/20 bg-transparent py-3 text-charcoal focus:border-gold focus:outline-none transition-colors"
+                      placeholder="Your name"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-charcoal/60 text-sm tracking-wider uppercase mb-2">
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      name="email"
+                      required
+                      value={form.email}
+                      onChange={handleChange}
+                      className="w-full border-b border-charcoal/20 bg-transparent py-3 text-charcoal focus:border-gold focus:outline-none transition-colors"
+                      placeholder="your@email.com"
+                    />
+                  </div>
+                </div>
+
                 <div>
                   <label className="block text-charcoal/60 text-sm tracking-wider uppercase mb-2">
-                    Name
+                    Event Type
                   </label>
-                  <input
-                    type="text"
+                  <select
+                    name="eventType"
+                    value={form.eventType}
+                    onChange={handleChange}
                     className="w-full border-b border-charcoal/20 bg-transparent py-3 text-charcoal focus:border-gold focus:outline-none transition-colors"
-                    placeholder="Your name"
-                  />
+                  >
+                    <option value="">Select an event type</option>
+                    <option value="wedding">Wedding</option>
+                    <option value="corporate">Corporate Event</option>
+                    <option value="birthday">Birthday Party</option>
+                    <option value="baby-shower">Baby Shower</option>
+                    <option value="ramadan">Ramadan Gathering</option>
+                    <option value="other">Other</option>
+                  </select>
                 </div>
+
                 <div>
                   <label className="block text-charcoal/60 text-sm tracking-wider uppercase mb-2">
-                    Email
+                    Event Date
                   </label>
                   <input
-                    type="email"
+                    type="date"
+                    name="eventDate"
+                    value={form.eventDate}
+                    onChange={handleChange}
                     className="w-full border-b border-charcoal/20 bg-transparent py-3 text-charcoal focus:border-gold focus:outline-none transition-colors"
-                    placeholder="your@email.com"
                   />
                 </div>
-              </div>
 
-              <div>
-                <label className="block text-charcoal/60 text-sm tracking-wider uppercase mb-2">
-                  Event Type
-                </label>
-                <select className="w-full border-b border-charcoal/20 bg-transparent py-3 text-charcoal focus:border-gold focus:outline-none transition-colors">
-                  <option value="">Select an event type</option>
-                  <option value="wedding">Wedding</option>
-                  <option value="corporate">Corporate Event</option>
-                  <option value="birthday">Birthday Party</option>
-                  <option value="baby-shower">Baby Shower</option>
-                  <option value="ramadan">Ramadan Gathering</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
+                <div>
+                  <label className="block text-charcoal/60 text-sm tracking-wider uppercase mb-2">
+                    Message
+                  </label>
+                  <textarea
+                    name="message"
+                    required
+                    rows={4}
+                    value={form.message}
+                    onChange={handleChange}
+                    className="w-full border-b border-charcoal/20 bg-transparent py-3 text-charcoal focus:border-gold focus:outline-none transition-colors resize-none"
+                    placeholder="Tell us about your event..."
+                  />
+                </div>
 
-              <div>
-                <label className="block text-charcoal/60 text-sm tracking-wider uppercase mb-2">
-                  Event Date
-                </label>
-                <input
-                  type="date"
-                  className="w-full border-b border-charcoal/20 bg-transparent py-3 text-charcoal focus:border-gold focus:outline-none transition-colors"
-                />
-              </div>
+                {status === "error" && (
+                  <p className="text-red-500 text-sm text-center">
+                    Something went wrong. Please try again.
+                  </p>
+                )}
 
-              <div>
-                <label className="block text-charcoal/60 text-sm tracking-wider uppercase mb-2">
-                  Message
-                </label>
-                <textarea
-                  rows={4}
-                  className="w-full border-b border-charcoal/20 bg-transparent py-3 text-charcoal focus:border-gold focus:outline-none transition-colors resize-none"
-                  placeholder="Tell us about your event..."
-                />
-              </div>
-
-              <div className="text-center pt-4">
-                <button
-                  type="submit"
-                  className="bg-charcoal text-gold px-12 py-4 tracking-[0.2em] uppercase text-sm hover:bg-gold hover:text-charcoal transition-all duration-500 border border-charcoal hover:border-gold"
-                >
-                  Send Inquiry
-                </button>
-              </div>
-            </form>
+                <div className="text-center pt-4">
+                  <button
+                    type="submit"
+                    disabled={status === "loading"}
+                    className="bg-charcoal text-gold px-12 py-4 tracking-[0.2em] uppercase text-sm hover:bg-gold hover:text-charcoal transition-all duration-500 border border-charcoal hover:border-gold disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {status === "loading" ? "Sending..." : "Send Inquiry"}
+                  </button>
+                </div>
+              </form>
+            )}
           </div>
 
           {/* ───── Contact Info Box ───── */}
@@ -106,7 +170,7 @@ export default function ContactPage() {
                   </svg>
                 </div>
                 <h3 className="font-serif text-lg text-charcoal mb-1">Email</h3>
-                <p className="text-charcoal/50 text-sm">hello@snacksandsips.com</p>
+                <p className="text-charcoal/50 text-sm">snacksnsips26@gmail.com</p>
               </div>
               <div className="text-center">
                 <div className="text-gold-dark mb-3">
