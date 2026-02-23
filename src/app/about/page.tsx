@@ -1,5 +1,18 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import PageHeader from "@/components/PageHeader";
+
+export const metadata: Metadata = {
+  title: "About Us",
+  description:
+    "Learn the story behind Snacks & Sips — where nostalgic Middle Eastern flavors meet luxury charcuterie and handcrafted drinks.",
+  openGraph: {
+    title: "About Us | Snacks & Sips",
+    description:
+      "Learn the story behind Snacks & Sips — where nostalgic Middle Eastern flavors meet luxury charcuterie.",
+    url: "https://snacksnsips.com/about",
+  },
+};
 
 export default function AboutPage() {
   return (

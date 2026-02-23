@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="90" viewBox="0 0 240 90">
+  <rect width="240" height="90" fill="#1a1a1a"/>
+  <text x="120" y="30" font-family="Georgia, serif" font-size="24" font-weight="600" fill="#c9a84c" text-anchor="middle" letter-spacing="10">SNACKS</text>
+  <text x="120" y="50" font-family="Georgia, serif" font-size="13" fill="#c9a84c" text-anchor="middle" letter-spacing="8">&amp;</text>
+  <text x="120" y="74" font-family="Georgia, serif" font-size="24" font-weight="600" fill="#c9a84c" text-anchor="middle" letter-spacing="10">SIPS</text>
+</svg>

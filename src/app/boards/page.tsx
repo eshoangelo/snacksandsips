@@ -1,6 +1,20 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import PageHeader from "@/components/PageHeader";
+
+export const metadata: Metadata = {
+  title: "Our Boards",
+  description:
+    "Explore our luxury charcuterie boards — classic spreads, Middle Eastern-inspired arrangements, and custom creations for every occasion.",
+  openGraph: {
+    title: "Our Boards | Snacks & Sips",
+    description:
+      "Luxury charcuterie boards for every occasion — classic, Middle Eastern-inspired, and fully custom.",
+    url: "https://snacksnsips.com/boards",
+    images: [{ url: "/images/three-boards-lineup.jpg", alt: "Snacks & Sips charcuterie boards" }],
+  },
+};
 
 export default function BoardsPage() {
   return (
