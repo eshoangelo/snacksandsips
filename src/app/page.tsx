@@ -62,13 +62,15 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div className="overflow-hidden">
-              <Image
-                src="/images/board-with-sign.jpg"
-                alt="Snacks & Sips board"
-                width={600}
-                height={500}
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
                 className="w-full h-[400px] md:h-[500px] object-cover"
-              />
+              >
+                <source src="/videos/PinkDrink.mov" type="video/mp4" />
+              </video>
             </div>
             <div>
               <p className="text-gold tracking-[0.3em] uppercase text-sm mb-4">
@@ -115,7 +117,7 @@ export default function Home() {
               },
               {
                 src: "/images/middleeasterboards.png",
-                title: "The Middle Eastern",
+                title: "A Taste Of Back Home",
               },
               {
                 src: "/images/valentineboard.png",

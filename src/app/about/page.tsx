@@ -127,7 +127,7 @@ export default function AboutPage() {
                   playsInline
                   className="w-full h-full object-cover"
                 >
-                  <source src="/videos/MiddleEasternBoards.mov" type="video/mp4" />
+                  <source src="/videos/PinkDrink.mov" type="video/mp4" />
                 </video>
               </div>
               <div className="overflow-hidden h-64 md:h-80">
@@ -138,7 +138,7 @@ export default function AboutPage() {
                   playsInline
                   className="w-full h-full object-cover"
                 >
-                  <source src="/videos/PinkDrink.mov" type="video/mp4" />
+                  <source src="/videos/MiddleEasternBoards.mov" type="video/mp4" />
                 </video>
               </div>
             </div>

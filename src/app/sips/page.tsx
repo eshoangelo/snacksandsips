@@ -21,9 +21,9 @@ export default function SipsPage() {
       desc: "Bright lemonade blended with blue spirulina, frozen into a smooth, tangy sweet/sour slush with a refreshing tropical twist. Available dye free.",
     },
     {
-      src: "/images/frozen-hot-chocolate.png",
+      src: "/images/frozenhotchoclate.PNG",
       title: "Frozen Hot Chocolate",
-      desc: "Creamy chocolate blended and frozen into a rich, smooth hot cocoa slush with indulgent, velvety flavor.",
+      desc: "Dye free. Rich, creamy chocolate blended ice cold.",
     },
     {
       src: "/images/pinacolada.PNG",
@@ -37,13 +37,68 @@ export default function SipsPage() {
     },
     {
       src: "/images/pineapple-habanero.png",
-      title: "Pineapple Habe\u00f1ero",
+      title: "Pineapple Habanero",
       desc: "Dye free. Sweet pineapple with a subtle habanero kick, frozen into a bold, tropical slush with a smooth heat.",
     },
     {
       src: "/images/strawberry-kiwi-fizz.png",
       title: "Strawberry Kiwi Fizz",
       desc: "Juicy strawberry and bright kiwi blended into a smooth, refreshing slush with a crisp, fruity finish. Can be made dye free.",
+    },
+    {
+      src: "/images/bajablast.PNG",
+      title: "Baja Blast",
+      desc: "Tropical lime citrus blended into an icy, electric-green summer classic.",
+    },
+    {
+      src: "/images/pinkstarburst.PNG",
+      title: "Pink Starburst",
+      desc: "Strawberry citrus sweetness frozen into a bright, nostalgic treat.",
+    },
+    {
+      src: "/images/kiwicoconut.PNG",
+      title: "Kiwi Coconut",
+      desc: "Dye free. Tangy kiwi and creamy coconut in a smooth tropical freeze.",
+    },
+    {
+      src: "/images/blueberrylemonade.PNG",
+      title: "Blueberry Lemonade",
+      desc: "Sweet blueberry meets crisp, refreshing lemonade. Can be made dye free.",
+    },
+    {
+      src: "/images/lavenderlemonade.PNG",
+      title: "Lavender Lemonade",
+      desc: "Light floral lavender layered into bright, icy lemonade. Can be made dye free.",
+    },
+    {
+      src: "/images/spicywatermelonlimeade.PNG",
+      title: "Spicy Watermelon Limeade",
+      desc: "Dye free. Juicy watermelon, fresh lime, and a subtle chili kick.",
+    },
+    {
+      src: "/images/mojito.PNG",
+      title: "Mojito",
+      desc: "Dye free. Cool mint and fresh lime in a crisp frozen blend. Can be flavored as well.",
+    },
+    {
+      src: "/images/cucumbermint.PNG",
+      title: "Cucumber Mint",
+      desc: "Dye free. Clean cucumber and mint for a light, refreshing sip.",
+    },
+    {
+      src: "/images/paloma.PNG",
+      title: "Paloma",
+      desc: "Dye free. Classic cocktail — bold grapefruit citrus with a smooth frozen finish.",
+    },
+    {
+      src: "/images/aperolspritz.PNG",
+      title: "Aperol Spritz",
+      desc: "Classic cocktail — bright orange citrus with a chic bittersweet edge.",
+    },
+    {
+      src: "/images/orangefanta.PNG",
+      title: "Orange Fanta",
+      desc: "Classic bold orange soda, frozen and fun.",
     },
   ];
 
@@ -62,6 +117,11 @@ export default function SipsPage() {
       src: "/images/classiccoffee.PNG",
       title: "Classic Coffee",
       desc: "Bold cold brew blended and frozen into a smooth, lightly sweet coffee slush with rich, refreshing flavor. Dye free.",
+    },
+    {
+      src: "/images/expressomartini.PNG",
+      title: "Espresso Martini",
+      desc: "Dye free. Bold espresso and smooth sweetness blended into a rich, velvety frozen indulgence with a deep coffee kick.",
     },
   ];
 
