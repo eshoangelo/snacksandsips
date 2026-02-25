@@ -125,18 +125,20 @@ export default function BoardsPage() {
                 Savory
               </h3>
               <div className="w-10 h-[1px] bg-gold mb-6" />
-              <p className="text-cream/60 leading-relaxed text-lg mb-8">
-                A rich spread of traditional Middle Eastern flavors, featuring bold,
-                savory bites and authentic dips layered with comfort and depth.
+              <p className="text-cream/60 leading-relaxed text-lg mb-6">
+                A rich spread of traditional Middle Eastern flavors — bold, savory
+                bites and authentic dips layered with comfort and depth.
               </p>
-              <div className="grid grid-cols-2 gap-3">
+
+              <p className="text-gold-dark tracking-[0.2em] uppercase text-xs mb-3">
+                Choose Your Dips — Pick 2
+              </p>
+              <div className="grid grid-cols-2 gap-3 mb-6">
                 {[
-                  "Grape Leaves",
-                  "Hummus & Labneh",
-                  "Za\u2019atar & Olive Oil",
-                  "Olives & Pickled Turnips",
-                  "Warm Pita",
-                  "Authentic Imported Dips",
+                  "Hummus",
+                  "Spicy Hummus",
+                  "Baba Ghanoush",
+                  "Lebneh",
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-3 text-cream/60">
                     <div className="w-1.5 h-1.5 bg-gold rounded-full flex-shrink-0" />
@@ -144,6 +146,13 @@ export default function BoardsPage() {
                   </div>
                 ))}
               </div>
+
+              <p className="text-cream/80 leading-relaxed text-sm italic font-bold">
+                A curated nostalgic assortment of rotating seasonal favorites, including
+                grape leaves, sesame crackers, pickled vegetables, seasonal veggies, olives,
+                warm pita, nuts &amp; seeds — and more, based on what is in season and
+                what we&apos;re able to source from overseas.
+              </p>
             </div>
           </div>
 
@@ -166,18 +175,26 @@ export default function BoardsPage() {
                 Sweet
               </h3>
               <div className="w-10 h-[1px] bg-gold mb-6" />
-              <p className="text-cream/60 leading-relaxed text-lg mb-8">
+              <p className="text-cream/60 leading-relaxed text-lg mb-6">
                 A beautifully styled selection of nostalgic Middle Eastern sweets
-                & fruits, served with creamy, indulgent dips that elevate every bite.
+                &amp; fruits, paired with creamy, indulgent dips that elevate every bite.
               </p>
-              <div className="grid grid-cols-2 gap-3">
+
+              <p className="text-gold-dark tracking-[0.2em] uppercase text-xs mb-3">
+                Choose Your Dips — Pick 2
+              </p>
+              <div className="grid grid-cols-2 gap-3 mb-6">
                 {[
-                  "Middle Eastern Sweets",
-                  "Fresh Seasonal Fruits",
-                  "Creamy Indulgent Dips",
-                  "Imported Specialty Items",
-                  "Dates & Dried Fruits",
-                  "Beautiful Styling & Garnishes",
+                  "Ashta",
+                  "Gamar",
+                  "Tahini",
+                  "Dibis (Date Syrup)",
+                  "Jam (Wild Fig/Apricot/Orange/Strawberry/Rose)",
+                  "Organic Honey",
+                  "Nutella",
+                  "Baklava",
+                  "Kleicha",
+                  "Assortment of Middle Eastern Sweet Treats",
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-3 text-cream/60">
                     <div className="w-1.5 h-1.5 bg-gold rounded-full flex-shrink-0" />
@@ -185,6 +202,13 @@ export default function BoardsPage() {
                   </div>
                 ))}
               </div>
+
+              <p className="text-cream/80 leading-relaxed text-sm italic font-bold">
+                A curated nostalgic assortment of rotating seasonal favorites, including
+                warm pita, baklava, Turkish delights, fresh fruit, dried apricots, dates,
+                kamardeen — and more, based on what is in season and what we&apos;re
+                able to source from overseas.
+              </p>
             </div>
           </div>
 
