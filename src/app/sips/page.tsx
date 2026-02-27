@@ -6,6 +6,11 @@ import PageHeader from "@/components/PageHeader";
 export default function SipsPage() {
   const signatureDrinks = [
     {
+      src: "/images/Birthday Cake.PNG",
+      title: "Birthday Cake",
+      desc: "Sweet vanilla cake flavor blended into a creamy frozen treat, topped with marshmallow fluff and festive sprinkles for a nostalgic finish.",
+    },
+    {
       src: "/images/pink-strawberry-slush.png",
       title: "Raspberry Fros\u00e9",
       desc: "Smooth ros\u00e9 wine with a raspberry pur\u00e9e twist.",
@@ -100,6 +105,21 @@ export default function SipsPage() {
       title: "Orange Fanta",
       desc: "Classic bold orange soda, frozen and fun.",
     },
+    {
+      src: "/images/Peach Bellini.jpeg",
+      title: "Peach Bellini",
+      desc: "Sweet white peach blended into a smooth, refreshing frozen cocktail with a delicate fruity finish.",
+    },
+    {
+      src: "/images/Shirley Temple.PNG",
+      title: "Shirley Temple",
+      desc: "Crisp lemon lime and pomegranate sweetness blended into a vibrant, refreshing frozen classic.",
+    },
+    {
+      src: "/images/Peach Sweet Tea.PNG",
+      title: "Peach Sweet Tea",
+      desc: "Dye free. Smooth sweet tea infused with ripe peach, blended into a refreshing, lightly fruity frozen beverage.",
+    },
   ];
 
   const coffeeDrinks = [
@@ -122,6 +142,11 @@ export default function SipsPage() {
       src: "/images/expressomartini.PNG",
       title: "Espresso Martini",
       desc: "Dye free. Bold espresso and smooth sweetness blended into a rich, velvety frozen indulgence with a deep coffee kick.",
+    },
+    {
+      src: "/images/HazelnutLatte.PNG",
+      title: "Hazelnut Latte",
+      desc: "Dye free. Bold coffee blended with smooth hazelnut and cream, finished into a rich, nutty frozen coffee experience.",
     },
   ];
 

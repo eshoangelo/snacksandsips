@@ -56,18 +56,19 @@ export default function BoardsPage() {
               />
             </div>
             <div>
-              <h3 className="font-serif text-2xl text-charcoal mb-3">What&apos;s Included</h3>
               <div className="w-10 h-[1px] bg-gold mb-6" />
-              <div className="grid grid-cols-2 gap-3">
+
+              {/* Meats */}
+              <p className="text-gold-dark tracking-[0.2em] uppercase text-xs mb-3">
+                Meats — Choose 2
+              </p>
+              <div className="grid grid-cols-2 gap-3 mb-6">
                 {[
-                  "Artisan Cheeses",
-                  "Cured Meats",
-                  "Fresh Fruit & Veggies",
-                  "Gourmet Nuts",
-                  "Honey & Preserves",
-                  "Artisan Crackers",
-                  "Indulgent Dipping Options",
-                  "Beautiful Styling & Garnishes",
+                  "Salami",
+                  "Summer Sausage",
+                  "Prosciutto",
+                  "Turkey",
+                  "Pepperoni",
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-3 text-charcoal/70">
                     <div className="w-1.5 h-1.5 bg-gold rounded-full flex-shrink-0" />
@@ -75,6 +76,55 @@ export default function BoardsPage() {
                   </div>
                 ))}
               </div>
+
+              {/* Cheeses */}
+              <p className="text-gold-dark tracking-[0.2em] uppercase text-xs mb-3">
+                Cheeses — Choose 3
+              </p>
+              <div className="grid grid-cols-2 gap-3 mb-6">
+                {[
+                  "Goat Cheese",
+                  "Gouda",
+                  "Brie",
+                  "Havarti",
+                  "Blue Cheese",
+                  "Colby",
+                  "Sharp Cheddar",
+                  "Mozzarella Balls",
+                  "Comté",
+                  "Manchego",
+                  "Gruyere",
+                ].map((item, i) => (
+                  <div key={i} className="flex items-center gap-3 text-charcoal/70">
+                    <div className="w-1.5 h-1.5 bg-gold rounded-full flex-shrink-0" />
+                    <span className="text-sm">{item}</span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Dips */}
+              <p className="text-gold-dark tracking-[0.2em] uppercase text-xs mb-3">
+                Dips — Choose 1 or 2
+              </p>
+              <div className="grid grid-cols-2 gap-3 mb-6">
+                {[
+                  "Nutella",
+                  "Organic Honey",
+                  "Jam (Strawberry / Raspberry / Fig / Apricot / Mixed Berry)",
+                  "Stone Ground Mustard",
+                ].map((item, i) => (
+                  <div key={i} className="flex items-center gap-3 text-charcoal/70">
+                    <div className="w-1.5 h-1.5 bg-gold rounded-full flex-shrink-0" />
+                    <span className="text-sm">{item}</span>
+                  </div>
+                ))}
+              </div>
+
+              <p className="text-charcoal/60 leading-relaxed text-sm italic">
+                Every board also includes a curated mix of seasonal &amp; dried fruits,
+                nuts, breads &amp; crackers, olives, chocolate, and sweet treats —
+                totaling 12 items per board.
+              </p>
             </div>
           </div>
         </div>
@@ -189,12 +239,9 @@ export default function BoardsPage() {
                   "Gamar",
                   "Tahini",
                   "Dibis (Date Syrup)",
-                  "Jam (Wild Fig/Apricot/Orange/Strawberry/Rose)",
+                  "Jam (Wild Fig / Apricot / Orange / Strawberry / Rose)",
                   "Organic Honey",
                   "Nutella",
-                  "Baklava",
-                  "Kleicha",
-                  "Assortment of Middle Eastern Sweet Treats",
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-3 text-cream/60">
                     <div className="w-1.5 h-1.5 bg-gold rounded-full flex-shrink-0" />
@@ -205,8 +252,8 @@ export default function BoardsPage() {
 
               <p className="text-cream/80 leading-relaxed text-sm italic font-bold">
                 A curated nostalgic assortment of rotating seasonal favorites, including
-                warm pita, baklava, Turkish delights, fresh fruit, dried apricots, dates,
-                kamardeen — and more, based on what is in season and what we&apos;re
+                warm pita, baklava, kleicha, Turkish delights, fresh fruit, dried apricots,
+                dates, kamardeen — and more, based on what is in season and what we&apos;re
                 able to source from overseas.
               </p>
             </div>
