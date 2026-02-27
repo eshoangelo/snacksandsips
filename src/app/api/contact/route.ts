@@ -23,7 +23,7 @@ export async function POST(req: Request) {
 
   const { error } = await resend.emails.send({
     from: "Snacks & Sips <snacksnsips@ironcloudsolution.com>",
-    to: "snacksnsips26@gmail.com",
+    to: "snacksnsipsmi@gmail.com",
     subject: `New Inquiry from ${name}`,
     html: `
       <!DOCTYPE html>
