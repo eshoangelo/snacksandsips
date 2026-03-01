@@ -69,7 +69,7 @@ export default function Home() {
                 playsInline
                 className="w-full h-[400px] md:h-[500px] object-cover"
               >
-                <source src="/videos/PinkDrink.mov" type="video/mp4" />
+                <source src="/videos/videodrink.mov" type="video/mp4" />
               </video>
             </div>
             <div>
