@@ -160,7 +160,7 @@ export default function BoardsPage() {
           <div className="grid md:grid-cols-2 gap-12 items-center mb-20">
             <div className="overflow-hidden">
               <Image
-                src="/images/middleeasterboards.png"
+                src="/images/JC6A0428.JPEG"
                 alt="Taste of Back Home – Savory"
                 width={600}
                 height={500}
@@ -210,7 +210,7 @@ export default function BoardsPage() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="overflow-hidden md:order-2">
               <Image
-                src="/images/boards.png"
+                src="/images/JC6A0186.JPEG"
                 alt="Taste of Back Home – Sweet"
                 width={600}
                 height={500}

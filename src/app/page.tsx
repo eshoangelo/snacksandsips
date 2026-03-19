@@ -114,24 +114,27 @@ export default function Home() {
               {
                 src: "/images/charcuterie-board-closeup.jpg",
                 title: "The Classic",
+                objectPos: "object-center",
               },
               {
-                src: "/images/middleeasterboards.png",
+                src: "/images/JC6A0489.JPEG",
                 title: "A Taste Of Back Home",
+                objectPos: "object-[center_70%]",
               },
               {
                 src: "/images/valentineboard.png",
                 title: "The Seasonal",
+                objectPos: "object-center",
               },
             ].map((b, i) => (
               <div key={i} className="group overflow-hidden">
-                <div className="overflow-hidden h-72">
+                <div className="overflow-hidden h-56 md:h-72">
                   <Image
                     src={b.src}
                     alt={b.title}
                     width={400}
                     height={288}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    className={`w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ${b.objectPos}`}
                   />
                 </div>
                 <h3 className="font-serif text-xl text-charcoal mt-4">
@@ -160,6 +163,16 @@ export default function Home() {
             The Sips
           </h2>
           <div className="gold-separator mx-auto mb-12" />
+
+          <div className="overflow-hidden rounded-sm mb-12 max-w-4xl mx-auto">
+            <Image
+              src="/images/JC6A0643.JPEG"
+              alt="Snacks & Sips signature frozen drinks lineup"
+              width={1200}
+              height={500}
+              className="w-full h-[200px] md:h-[350px] object-cover object-bottom"
+            />
+          </div>
 
           <div className="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory md:justify-center scrollbar-hide">
             {[

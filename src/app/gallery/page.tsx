@@ -5,19 +5,22 @@ import { useState } from "react";
 import PageHeader from "@/components/PageHeader";
 
 const images = [
+  { src: "/images/JC6A0348.jpeg", alt: "Honey drizzle on charcuterie board" },
+  { src: "/images/JC6A0748.JPEG", alt: "Dipping pita in sweet board" },
   { src: "/images/logoandboard.png", alt: "Snacks & Sips board with logo" },
-  { src: "/images/board-with-sign.jpg", alt: "Board with sign" },
+  { src: "/images/JC6A0489.JPEG", alt: "Middle Eastern savory board" },
+  { src: "/images/JC6A0186.JPEG", alt: "Middle Eastern sweet board" },
   { src: "/images/three-boards-lineup.jpg", alt: "Three boards lineup" },
-  { src: "/images/middleeasterboards.png", alt: "Middle Eastern boards" },
+  { src: "/images/JC6A0262.JPEG", alt: "Turkish delights and dips closeup" },
+  { src: "/images/JC6A0643.JPEG", alt: "Snacks & Sips frozen drinks lineup" },
   { src: "/images/charcuterie-board-closeup.jpg", alt: "Charcuterie board closeup" },
+  { src: "/images/JC6A0504.JPEG", alt: "Sweet board with honey and baklava" },
+  { src: "/images/JC6A0600.JPEG", alt: "Three signature frozen drinks" },
+  { src: "/images/JC6A0328.JPEG", alt: "Sweet board overhead" },
+  { src: "/images/JC6A0428.JPEG", alt: "Middle Eastern savory board closeup" },
   { src: "/images/valentineboard.png", alt: "Valentine board" },
   { src: "/images/3boards.png", alt: "Three boards overhead" },
-  { src: "/images/boards.png", alt: "Multiple boards" },
-  { src: "/images/pink-strawberry-slush.png", alt: "Strawberry slush" },
-  { src: "/images/blue-mango-cup.png", alt: "Blue mango cup" },
-  { src: "/images/pistachio-caramel-cup.png", alt: "Pistachio caramel cup" },
-  { src: "/images/chocolate-pretzel-cup.png", alt: "Chocolate pretzel cup" },
-  { src: "/images/yellow-mango-slush.png", alt: "Mango sunshine" },
+  { src: "/images/board-with-sign.jpg", alt: "Board with sign" },
 ];
 
 export default function GalleryPage() {

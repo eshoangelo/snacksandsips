@@ -27,8 +27,8 @@ export default function AboutPage() {
               <div className="absolute -inset-4 border border-gold/20 -z-0" />
               <div className="overflow-hidden">
                 <Image
-                  src="/images/board-with-sign.jpg"
-                  alt="Snacks & Sips charcuterie board with logo"
+                  src="/images/JC6A0348.jpeg"
+                  alt="Honey drizzle on a charcuterie board"
                   width={600}
                   height={800}
                   className="w-full h-[500px] md:h-[600px] object-cover"
