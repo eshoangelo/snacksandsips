@@ -158,3 +158,38 @@ html {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* Sips continuous scroll carousel */
+.sips-carousel-container {
+  width: 100%;
+}
+
+.sips-carousel {
+  display: flex;
+  gap: 24px;
+  animation: scroll-sips 90s linear infinite;
+  width: max-content;
+}
+
+.sips-card {
+  width: 200px;
+}
+
+@keyframes scroll-sips {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 768px) {
+  .sips-card {
+    width: 150px;
+  }
+
+  .sips-carousel {
+    gap: 16px;
+  }
+}

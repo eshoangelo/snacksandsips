@@ -2,6 +2,107 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { useRef, useCallback } from "react";
+
+const allSips = [
+  { src: "/images/Birthday Cake.PNG", title: "Birthday Cake" },
+  { src: "/images/pink-strawberry-slush.png", title: "Raspberry Frosé" },
+  { src: "/images/yellow-mango-slush.png", title: "Mimosa" },
+  { src: "/images/blue-mango-cup.png", title: "Blue Lagoon" },
+  { src: "/images/frozenhotchoclate.PNG", title: "Frozen Hot Chocolate" },
+  { src: "/images/pinacolada.PNG", title: "Piña Colada" },
+  { src: "/images/dreamsicle.PNG", title: "Dreamsicle" },
+  { src: "/images/pineapple-habanero.png", title: "Pineapple Habanero" },
+  { src: "/images/strawberry-kiwi-fizz.png", title: "Strawberry Kiwi Fizz" },
+  { src: "/images/bajablast.PNG", title: "Baja Blast" },
+  { src: "/images/pinkstarburst.PNG", title: "Pink Starburst" },
+  { src: "/images/kiwicoconut.PNG", title: "Kiwi Coconut" },
+  { src: "/images/blueberrylemonade.PNG", title: "Blueberry Lemonade" },
+  { src: "/images/lavenderlemonade.PNG", title: "Lavender Lemonade" },
+  { src: "/images/spicywatermelonlimeade.PNG", title: "Spicy Watermelon Limeade" },
+  { src: "/images/mojito.PNG", title: "Mojito" },
+  { src: "/images/cucumbermint.PNG", title: "Cucumber Mint" },
+  { src: "/images/paloma.PNG", title: "Paloma" },
+  { src: "/images/aperolspritz.PNG", title: "Aperol Spritz" },
+  { src: "/images/orangefanta.PNG", title: "Orange Fanta" },
+  { src: "/images/Peach Bellini.jpeg", title: "Peach Bellini" },
+  { src: "/images/Shirley Temple.PNG", title: "Shirley Temple" },
+  { src: "/images/Peach Sweet Tea.PNG", title: "Peach Sweet Tea" },
+  { src: "/images/pistachio-caramel-cup.png", title: "Pistachio Latte" },
+  { src: "/images/chocolate-pretzel-cup.png", title: "Salted Caramel Mocha" },
+  { src: "/images/classiccoffee.PNG", title: "Classic Coffee" },
+  { src: "/images/expressomartini.PNG", title: "Espresso Martini" },
+  { src: "/images/HazelnutLatte.PNG", title: "Hazelnut Latte" },
+];
+
+function SipCard({ sip }: { sip: { src: string; title: string } }) {
+  return (
+    <div className="sips-card flex-shrink-0">
+      <div className="overflow-hidden h-48 md:h-64">
+        <Image
+          src={sip.src}
+          alt={sip.title}
+          width={200}
+          height={256}
+          className="w-full h-full object-cover"
+        />
+      </div>
+      <h3 className="font-serif text-sm md:text-lg text-gold mt-3 text-center">{sip.title}</h3>
+    </div>
+  );
+}
+
+function SipsCarousel() {
+  const carouselRef = useRef<HTMLDivElement>(null);
+
+  const handlePause = useCallback(() => {
+    const el = carouselRef.current;
+    if (!el) return;
+    const style = getComputedStyle(el);
+    const matrix = new DOMMatrix(style.transform);
+    el.style.animation = "none";
+    el.style.transform = `translateX(${matrix.m41}px)`;
+  }, []);
+
+  const handleResume = useCallback(() => {
+    const el = carouselRef.current;
+    if (!el) return;
+    const style = getComputedStyle(el);
+    const matrix = new DOMMatrix(style.transform);
+    const currentX = matrix.m41;
+    const totalWidth = el.scrollWidth / 2;
+    const remaining = (totalWidth + currentX) / totalWidth;
+    const fullDuration = 90;
+    const remainingDuration = remaining * fullDuration;
+
+    el.style.transform = "";
+    el.style.animation = "none";
+    void el.offsetHeight;
+    el.style.animation = `scroll-sips ${fullDuration}s linear infinite`;
+    el.style.animationDelay = `-${(1 - remaining) * fullDuration}s`;
+  }, []);
+
+  return (
+    <div
+      className="sips-carousel-container overflow-hidden relative"
+      onMouseEnter={handlePause}
+      onMouseLeave={handleResume}
+      onTouchStart={handlePause}
+      onTouchEnd={handleResume}
+    >
+      <div className="sips-carousel" ref={carouselRef}>
+        {/* First set */}
+        {allSips.map((sip, i) => (
+          <SipCard key={`a-${i}`} sip={sip} />
+        ))}
+        {/* Duplicate set for seamless loop */}
+        {allSips.map((sip, i) => (
+          <SipCard key={`b-${i}`} sip={sip} />
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export default function Home() {
   return (
@@ -174,26 +275,7 @@ export default function Home() {
             />
           </div>
 
-          <div className="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory md:justify-center scrollbar-hide">
-            {[
-              { src: "/images/pink-strawberry-slush.png", title: "Raspberry Fros\u00e9" },
-              { src: "/images/blue-mango-cup.png", title: "Blue Lagoon" },
-              { src: "/images/pistachio-caramel-cup.png", title: "Pistachio Latte" },
-            ].map((d, i) => (
-              <div key={i} className="min-w-[200px] snap-center">
-                <div className="overflow-hidden h-64">
-                  <Image
-                    src={d.src}
-                    alt={d.title}
-                    width={200}
-                    height={256}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <h3 className="font-serif text-lg text-gold mt-3">{d.title}</h3>
-              </div>
-            ))}
-          </div>
+          <SipsCarousel />
 
           <Link
             href="/sips"
