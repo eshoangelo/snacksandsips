@@ -113,7 +113,7 @@ function DrinkCarousel({
                           {drink.title}
                         </h3>
                         <div className="w-6 sm:w-8 h-[1px] bg-gold/40 mx-auto mb-2 sm:mb-3 md:mb-4" />
-                        <p className="text-cream/50 leading-relaxed text-[11px] sm:text-xs md:text-sm line-clamp-3 sm:line-clamp-none">
+                        <p className="text-cream/50 leading-relaxed text-[11px] sm:text-xs md:text-sm">
                           {drink.desc}
                         </p>
                       </div>
