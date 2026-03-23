@@ -1,10 +1,187 @@
 "use client";
 
+import { useState, useRef, useCallback, useEffect } from "react";
 import Image from "next/image";
 import PageHeader from "@/components/PageHeader";
 
+type Drink = { src: string; title: string; desc: string };
+
+function DrinkCarousel({
+  drinks,
+  label,
+  subtitle,
+}: {
+  drinks: Drink[];
+  label: string;
+  subtitle: string;
+}) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [visibleCount, setVisibleCount] = useState(3);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
+  useEffect(() => {
+    const updateVisible = () => {
+      if (window.innerWidth < 640) setVisibleCount(1);
+      else if (window.innerWidth < 1024) setVisibleCount(2);
+      else setVisibleCount(3);
+    };
+    updateVisible();
+    window.addEventListener("resize", updateVisible);
+    return () => window.removeEventListener("resize", updateVisible);
+  }, []);
+
+  const maxIndex = Math.max(0, drinks.length - visibleCount);
+
+  const goTo = useCallback(
+    (index: number) => {
+      if (isTransitioning) return;
+      setIsTransitioning(true);
+      setCurrentIndex(Math.max(0, Math.min(index, maxIndex)));
+      setTimeout(() => setIsTransitioning(false), 500);
+    },
+    [maxIndex, isTransitioning]
+  );
+
+  const prev = () => goTo(currentIndex - 1);
+  const next = () => goTo(currentIndex + 1);
+
+  // Touch/swipe support
+  const touchStartX = useRef(0);
+  const onTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+  const onTouchEnd = (e: React.TouchEvent) => {
+    const diff = touchStartX.current - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) next();
+      else prev();
+    }
+  };
+
+  return (
+    <section className="py-12 md:py-16 bg-charcoal relative overflow-hidden">
+      <div
+        className="absolute inset-0 opacity-[0.03]"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a84c' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+        }}
+      />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+        <div className="text-center mb-10">
+          <p className="text-gold-dark tracking-[0.3em] uppercase text-sm mb-3">
+            {subtitle}
+          </p>
+          <h2 className="font-serif text-3xl md:text-4xl text-cream mb-4">
+            {label}
+          </h2>
+          <div className="gold-separator mx-auto" />
+        </div>
+
+        {/* Carousel */}
+        <div className="relative">
+          {/* Track — full width on mobile, inset for arrows on desktop */}
+          <div className="overflow-hidden sm:mx-14">
+            <div
+              ref={trackRef}
+              className="flex transition-transform duration-500 ease-in-out"
+              style={{
+                transform: `translateX(-${currentIndex * (100 / visibleCount)}%)`,
+              }}
+              onTouchStart={onTouchStart}
+              onTouchEnd={onTouchEnd}
+            >
+              {drinks.map((drink, i) => (
+                <div
+                  key={i}
+                  className="flex-shrink-0 px-1.5 sm:px-3"
+                  style={{ width: `${100 / visibleCount}%` }}
+                >
+                  <div className="group">
+                    <div className="bg-charcoal-light border border-gold/10 overflow-hidden">
+                      <div className="overflow-hidden h-72 sm:h-80 md:h-96">
+                        <Image
+                          src={drink.src}
+                          alt={drink.title}
+                          width={400}
+                          height={384}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                        />
+                      </div>
+                      <div className="p-5 sm:p-6 md:p-8 text-center">
+                        <h3 className="font-serif text-lg sm:text-xl md:text-2xl text-gold mb-2 sm:mb-3">
+                          {drink.title}
+                        </h3>
+                        <div className="w-8 h-[1px] bg-gold/40 mx-auto mb-3 sm:mb-4" />
+                        <p className="text-cream/50 leading-relaxed text-xs sm:text-sm">
+                          {drink.desc}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Arrow buttons — hidden on mobile (swipe instead), visible on sm+ */}
+          <button
+            onClick={prev}
+            disabled={currentIndex === 0}
+            className="hidden sm:flex absolute left-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 items-center justify-center bg-charcoal/80 border border-gold/20 text-gold hover:bg-gold/10 transition-colors disabled:opacity-20 disabled:cursor-not-allowed"
+            aria-label="Previous drinks"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M15 18l-6-6 6-6" />
+            </svg>
+          </button>
+          <button
+            onClick={next}
+            disabled={currentIndex >= maxIndex}
+            className="hidden sm:flex absolute right-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 items-center justify-center bg-charcoal/80 border border-gold/20 text-gold hover:bg-gold/10 transition-colors disabled:opacity-20 disabled:cursor-not-allowed"
+            aria-label="Next drinks"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M9 18l6-6-6-6" />
+            </svg>
+          </button>
+        </div>
+
+        {/* Mobile arrow buttons — below the carousel */}
+        <div className="flex sm:hidden justify-center gap-6 mt-6">
+          <button
+            onClick={prev}
+            disabled={currentIndex === 0}
+            className="w-12 h-12 flex items-center justify-center border border-gold/20 text-gold hover:bg-gold/10 transition-colors disabled:opacity-20 disabled:cursor-not-allowed"
+            aria-label="Previous drinks"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M15 18l-6-6 6-6" />
+            </svg>
+          </button>
+          <button
+            onClick={next}
+            disabled={currentIndex >= maxIndex}
+            className="w-12 h-12 flex items-center justify-center border border-gold/20 text-gold hover:bg-gold/10 transition-colors disabled:opacity-20 disabled:cursor-not-allowed"
+            aria-label="Next drinks"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M9 18l6-6-6-6" />
+            </svg>
+          </button>
+        </div>
+
+        {/* Counter — cleaner than 23 dots */}
+        <p className="text-center text-cream/30 text-sm mt-4">
+          {currentIndex + 1} of {drinks.length}
+        </p>
+      </div>
+    </section>
+  );
+}
+
 export default function SipsPage() {
-  const signatureDrinks = [
+  const signatureDrinks: Drink[] = [
     {
       src: "/images/Birthday Cake.PNG",
       title: "Birthday Cake",
@@ -93,12 +270,12 @@ export default function SipsPage() {
     {
       src: "/images/paloma.PNG",
       title: "Paloma",
-      desc: "Dye free. Classic cocktail — bold grapefruit citrus with a smooth frozen finish.",
+      desc: "Dye free. Classic cocktail \u2014 bold grapefruit citrus with a smooth frozen finish.",
     },
     {
       src: "/images/aperolspritz.PNG",
       title: "Aperol Spritz",
-      desc: "Classic cocktail — bright orange citrus with a chic bittersweet edge.",
+      desc: "Classic cocktail \u2014 bright orange citrus with a chic bittersweet edge.",
     },
     {
       src: "/images/orangefanta.PNG",
@@ -122,7 +299,7 @@ export default function SipsPage() {
     },
   ];
 
-  const coffeeDrinks = [
+  const coffeeDrinks: Drink[] = [
     {
       src: "/images/pistachio-caramel-cup.png",
       title: "Pistachio Latte",
@@ -149,27 +326,6 @@ export default function SipsPage() {
       desc: "Dye free. Bold coffee blended with smooth hazelnut and cream, finished into a rich, nutty frozen coffee experience.",
     },
   ];
-
-  const DrinkCard = ({ drink }: { drink: { src: string; title: string; desc: string } }) => (
-    <div className="group card-hover">
-      <div className="bg-charcoal-light border border-gold/10 overflow-hidden">
-        <div className="overflow-hidden h-80 md:h-96">
-          <Image
-            src={drink.src}
-            alt={drink.title}
-            width={400}
-            height={384}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-          />
-        </div>
-        <div className="p-8 text-center">
-          <h3 className="font-serif text-2xl text-gold mb-3">{drink.title}</h3>
-          <div className="w-8 h-[1px] bg-gold/40 mx-auto mb-4" />
-          <p className="text-cream/50 leading-relaxed text-sm">{drink.desc}</p>
-        </div>
-      </div>
-    </div>
-  );
 
   return (
     <>
@@ -223,57 +379,19 @@ export default function SipsPage() {
         </div>
       </section>
 
-      {/* ───── Signature Sips ───── */}
-      <section className="py-12 md:py-16 bg-charcoal relative">
-        <div
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a84c' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          }}
-        />
-        <div className="max-w-6xl mx-auto px-6 relative z-10">
-          <div className="text-center mb-8">
-            <p className="text-gold-dark tracking-[0.3em] uppercase text-sm mb-3">
-              Frozen &amp; Fresh
-            </p>
-            <h2 className="font-serif text-3xl md:text-4xl text-cream mb-4">
-              Signature Sips
-            </h2>
-            <div className="gold-separator mx-auto" />
-          </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            {signatureDrinks.map((drink, i) => (
-              <DrinkCard key={i} drink={drink} />
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* ───── Signature Sips Carousel ───── */}
+      <DrinkCarousel
+        drinks={signatureDrinks}
+        label="Signature Sips"
+        subtitle="Frozen &amp; Fresh"
+      />
 
-      {/* ───── Coffee Sips ───── */}
-      <section className="py-12 md:py-16 bg-charcoal relative">
-        <div
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a84c' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          }}
-        />
-        <div className="max-w-6xl mx-auto px-6 relative z-10">
-          <div className="text-center mb-8">
-            <p className="text-gold-dark tracking-[0.3em] uppercase text-sm mb-3">
-              Bold &amp; Smooth
-            </p>
-            <h2 className="font-serif text-3xl md:text-4xl text-cream mb-4">
-              Coffee Sips
-            </h2>
-            <div className="gold-separator mx-auto" />
-          </div>
-          <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            {coffeeDrinks.map((drink, i) => (
-              <DrinkCard key={i} drink={drink} />
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* ───── Coffee Sips Carousel ───── */}
+      <DrinkCarousel
+        drinks={coffeeDrinks}
+        label="Coffee Sips"
+        subtitle="Bold &amp; Smooth"
+      />
 
       {/* ───── Drinks Video Section ───── */}
       <section className="py-20 md:py-28 marble-bg">
