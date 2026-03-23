@@ -22,9 +22,9 @@ function DrinkCarousel({
 
   useEffect(() => {
     const updateVisible = () => {
-      if (window.innerWidth < 640) setVisibleCount(1);
-      else if (window.innerWidth < 1024) setVisibleCount(2);
-      else setVisibleCount(3);
+      if (window.innerWidth < 640) setVisibleCount(2);
+      else if (window.innerWidth < 1024) setVisibleCount(3);
+      else setVisibleCount(4);
     };
     updateVisible();
     window.addEventListener("resize", updateVisible);
@@ -99,7 +99,7 @@ function DrinkCarousel({
                 >
                   <div className="group">
                     <div className="bg-charcoal-light border border-gold/10 overflow-hidden">
-                      <div className="overflow-hidden h-72 sm:h-80 md:h-96">
+                      <div className="overflow-hidden h-48 sm:h-72 md:h-80 lg:h-96">
                         <Image
                           src={drink.src}
                           alt={drink.title}
@@ -108,12 +108,12 @@ function DrinkCarousel({
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                         />
                       </div>
-                      <div className="p-5 sm:p-6 md:p-8 text-center">
-                        <h3 className="font-serif text-lg sm:text-xl md:text-2xl text-gold mb-2 sm:mb-3">
+                      <div className="p-3 sm:p-5 md:p-6 lg:p-8 text-center">
+                        <h3 className="font-serif text-sm sm:text-lg md:text-xl lg:text-2xl text-gold mb-1 sm:mb-2 md:mb-3">
                           {drink.title}
                         </h3>
-                        <div className="w-8 h-[1px] bg-gold/40 mx-auto mb-3 sm:mb-4" />
-                        <p className="text-cream/50 leading-relaxed text-xs sm:text-sm">
+                        <div className="w-6 sm:w-8 h-[1px] bg-gold/40 mx-auto mb-2 sm:mb-3 md:mb-4" />
+                        <p className="text-cream/50 leading-relaxed text-[11px] sm:text-xs md:text-sm line-clamp-3 sm:line-clamp-none">
                           {drink.desc}
                         </p>
                       </div>
