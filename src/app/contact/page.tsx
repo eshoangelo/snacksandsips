@@ -249,7 +249,7 @@ export default function ContactPage() {
                   </svg>
                 </div>
                 <h3 className="font-serif text-lg text-charcoal mb-1">Based In</h3>
-                <p className="text-charcoal/50 text-sm">Available for events</p>
+                <p className="text-charcoal/50 text-sm">Michigan</p>
               </div>
             </div>
           </div>
