@@ -80,7 +80,7 @@ function DrinkList({
                         alt={drink.title}
                         width={400}
                         height={400}
-                        className="w-full h-56 sm:h-72 md:h-80 object-cover"
+                        className="w-full h-auto sm:h-72 md:h-80 object-cover"
                       />
                     </div>
                     <div className="flex flex-col justify-center">
