@@ -47,13 +47,15 @@ export default function BoardsPage() {
           {/* Board Image + Items */}
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="overflow-hidden">
-              <Image
-                src="/images/charcuterie-board-closeup.jpg"
-                alt="Classic Charcuterie Board"
-                width={600}
-                height={500}
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
                 className="w-full h-[400px] md:h-[500px] object-cover"
-              />
+              >
+                <source src="/videos/C9406.mov" type="video/mp4" />
+              </video>
             </div>
             <div>
               <div className="w-10 h-[1px] bg-gold mb-6" />
@@ -289,13 +291,15 @@ export default function BoardsPage() {
               </Link>
             </div>
             <div className="overflow-hidden">
-              <Image
-                src="/images/three-boards-lineup.jpg"
-                alt="Three boards lineup"
-                width={600}
-                height={500}
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
                 className="w-full h-[400px] md:h-[500px] object-cover"
-              />
+              >
+                <source src="/videos/C9409.mov" type="video/mp4" />
+              </video>
             </div>
           </div>
         </div>

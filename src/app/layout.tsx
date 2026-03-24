@@ -70,7 +70,7 @@ const jsonLd = {
   hasMenu: "https://snacksnsips.com/boards",
   contactPoint: {
     "@type": "ContactPoint",
-    email: "snacksnsips26@gmail.com",
+    email: "snacksnsipsmi@gmail.com",
     contactType: "customer service",
   },
   sameAs: [],

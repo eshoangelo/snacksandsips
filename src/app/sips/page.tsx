@@ -1,12 +1,12 @@
 "use client";
 
-import { useState, useRef, useCallback, useEffect } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import PageHeader from "@/components/PageHeader";
 
 type Drink = { src: string; title: string; desc: string };
 
-function DrinkCarousel({
+function DrinkList({
   drinks,
   label,
   subtitle,
@@ -15,49 +15,7 @@ function DrinkCarousel({
   label: string;
   subtitle: string;
 }) {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [visibleCount, setVisibleCount] = useState(3);
-  const trackRef = useRef<HTMLDivElement>(null);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-
-  useEffect(() => {
-    const updateVisible = () => {
-      if (window.innerWidth < 640) setVisibleCount(2);
-      else if (window.innerWidth < 1024) setVisibleCount(3);
-      else setVisibleCount(4);
-    };
-    updateVisible();
-    window.addEventListener("resize", updateVisible);
-    return () => window.removeEventListener("resize", updateVisible);
-  }, []);
-
-  const maxIndex = Math.max(0, drinks.length - visibleCount);
-
-  const goTo = useCallback(
-    (index: number) => {
-      if (isTransitioning) return;
-      setIsTransitioning(true);
-      setCurrentIndex(Math.max(0, Math.min(index, maxIndex)));
-      setTimeout(() => setIsTransitioning(false), 500);
-    },
-    [maxIndex, isTransitioning]
-  );
-
-  const prev = () => goTo(currentIndex - 1);
-  const next = () => goTo(currentIndex + 1);
-
-  // Touch/swipe support
-  const touchStartX = useRef(0);
-  const onTouchStart = (e: React.TouchEvent) => {
-    touchStartX.current = e.touches[0].clientX;
-  };
-  const onTouchEnd = (e: React.TouchEvent) => {
-    const diff = touchStartX.current - e.changedTouches[0].clientX;
-    if (Math.abs(diff) > 50) {
-      if (diff > 0) next();
-      else prev();
-    }
-  };
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   return (
     <section className="py-12 md:py-16 bg-charcoal relative overflow-hidden">
@@ -67,7 +25,7 @@ function DrinkCarousel({
           backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a84c' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
         }}
       />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
         <div className="text-center mb-10">
           <p className="text-gold-dark tracking-[0.3em] uppercase text-sm mb-3">
             {subtitle}
@@ -78,103 +36,68 @@ function DrinkCarousel({
           <div className="gold-separator mx-auto" />
         </div>
 
-        {/* Carousel */}
-        <div className="relative">
-          {/* Track — full width on mobile, inset for arrows on desktop */}
-          <div className="overflow-hidden sm:mx-14">
-            <div
-              ref={trackRef}
-              className="flex transition-transform duration-500 ease-in-out"
-              style={{
-                transform: `translateX(-${currentIndex * (100 / visibleCount)}%)`,
-              }}
-              onTouchStart={onTouchStart}
-              onTouchEnd={onTouchEnd}
-            >
-              {drinks.map((drink, i) => (
-                <div
-                  key={i}
-                  className="flex-shrink-0 px-1.5 sm:px-3"
-                  style={{ width: `${100 / visibleCount}%` }}
+        <div className="border-t border-gold/10">
+          {drinks.map((drink, i) => (
+            <div key={i} className="border-b border-gold/10">
+              <button
+                onClick={() => setActiveIndex(activeIndex === i ? null : i)}
+                className="w-full flex items-center justify-between py-4 sm:py-5 px-2 sm:px-4 group cursor-pointer"
+              >
+                <span
+                  className={`font-serif text-lg sm:text-xl md:text-2xl transition-colors duration-300 ${
+                    activeIndex === i ? "text-gold" : "text-cream/70 group-hover:text-cream"
+                  }`}
                 >
-                  <div className="group">
-                    <div className="bg-charcoal-light border border-gold/10 overflow-hidden">
-                      <div className="overflow-hidden h-48 sm:h-72 md:h-80 lg:h-96">
-                        <Image
-                          src={drink.src}
-                          alt={drink.title}
-                          width={400}
-                          height={384}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                        />
-                      </div>
-                      <div className="p-3 sm:p-5 md:p-6 lg:p-8 text-center">
-                        <h3 className="font-serif text-sm sm:text-lg md:text-xl lg:text-2xl text-gold mb-1 sm:mb-2 md:mb-3">
-                          {drink.title}
-                        </h3>
-                        <div className="w-6 sm:w-8 h-[1px] bg-gold/40 mx-auto mb-2 sm:mb-3 md:mb-4" />
-                        <p className="text-cream/50 leading-relaxed text-[11px] sm:text-xs md:text-sm">
-                          {drink.desc}
-                        </p>
-                      </div>
+                  {drink.title}
+                </span>
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  className={`text-gold/50 transition-transform duration-300 flex-shrink-0 ml-4 ${
+                    activeIndex === i ? "rotate-180" : ""
+                  }`}
+                >
+                  <path d="M6 9l6 6 6-6" />
+                </svg>
+              </button>
+
+              <div
+                className={`grid transition-all duration-500 ease-in-out ${
+                  activeIndex === i
+                    ? "grid-rows-[1fr] opacity-100 pb-6"
+                    : "grid-rows-[0fr] opacity-0"
+                }`}
+              >
+                <div className="overflow-hidden">
+                  <div className="flex flex-col sm:flex-row gap-5 sm:gap-8 px-2 sm:px-4">
+                    <div className="w-full sm:w-64 md:w-80 flex-shrink-0 overflow-hidden">
+                      <Image
+                        src={drink.src}
+                        alt={drink.title}
+                        width={400}
+                        height={400}
+                        className="w-full h-56 sm:h-72 md:h-80 object-cover"
+                      />
+                    </div>
+                    <div className="flex flex-col justify-center">
+                      <h3 className="font-serif text-xl md:text-2xl text-gold mb-3">
+                        {drink.title}
+                      </h3>
+                      <div className="w-8 h-[1px] bg-gold/40 mb-4" />
+                      <p className="text-cream/60 leading-relaxed text-sm md:text-base">
+                        {drink.desc}
+                      </p>
                     </div>
                   </div>
                 </div>
-              ))}
+              </div>
             </div>
-          </div>
-
-          {/* Arrow buttons — hidden on mobile (swipe instead), visible on sm+ */}
-          <button
-            onClick={prev}
-            disabled={currentIndex === 0}
-            className="hidden sm:flex absolute left-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 items-center justify-center bg-charcoal/80 border border-gold/20 text-gold hover:bg-gold/10 transition-colors disabled:opacity-20 disabled:cursor-not-allowed"
-            aria-label="Previous drinks"
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M15 18l-6-6 6-6" />
-            </svg>
-          </button>
-          <button
-            onClick={next}
-            disabled={currentIndex >= maxIndex}
-            className="hidden sm:flex absolute right-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 items-center justify-center bg-charcoal/80 border border-gold/20 text-gold hover:bg-gold/10 transition-colors disabled:opacity-20 disabled:cursor-not-allowed"
-            aria-label="Next drinks"
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M9 18l6-6-6-6" />
-            </svg>
-          </button>
+          ))}
         </div>
-
-        {/* Mobile arrow buttons — below the carousel */}
-        <div className="flex sm:hidden justify-center gap-6 mt-6">
-          <button
-            onClick={prev}
-            disabled={currentIndex === 0}
-            className="w-12 h-12 flex items-center justify-center border border-gold/20 text-gold hover:bg-gold/10 transition-colors disabled:opacity-20 disabled:cursor-not-allowed"
-            aria-label="Previous drinks"
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M15 18l-6-6 6-6" />
-            </svg>
-          </button>
-          <button
-            onClick={next}
-            disabled={currentIndex >= maxIndex}
-            className="w-12 h-12 flex items-center justify-center border border-gold/20 text-gold hover:bg-gold/10 transition-colors disabled:opacity-20 disabled:cursor-not-allowed"
-            aria-label="Next drinks"
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M9 18l6-6-6-6" />
-            </svg>
-          </button>
-        </div>
-
-        {/* Counter — cleaner than 23 dots */}
-        <p className="text-center text-cream/30 text-sm mt-4">
-          {currentIndex + 1} of {drinks.length}
-        </p>
       </div>
     </section>
   );
@@ -379,15 +302,15 @@ export default function SipsPage() {
         </div>
       </section>
 
-      {/* ───── Signature Sips Carousel ───── */}
-      <DrinkCarousel
+      {/* ───── Signature Sips List ───── */}
+      <DrinkList
         drinks={signatureDrinks}
         label="Signature Sips"
         subtitle="Frozen &amp; Fresh"
       />
 
-      {/* ───── Coffee Sips Carousel ───── */}
-      <DrinkCarousel
+      {/* ───── Coffee Sips List ───── */}
+      <DrinkList
         drinks={coffeeDrinks}
         label="Coffee Sips"
         subtitle="Bold &amp; Smooth"

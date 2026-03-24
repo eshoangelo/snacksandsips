@@ -1,0 +1,64 @@
+[2026-03-19T16:36:34.813Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[2026-03-19T16:36:34.867Z] [log] [HMR] connected
+[2026-03-19T16:36:34.884Z] [warning] Image with src "/images/charcuterie-board-closeup.jpg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[2026-03-19T16:36:34.890Z] [warning] Image with src "/images/valentineboard.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[2026-03-19T16:36:34.910Z] [warning] Image with src "/images/JC6A0489.JPEG" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[2026-03-19T16:36:36.945Z] [warning] Image with src "/images/charcuterie-board-closeup.jpg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[2026-03-19T16:37:04.492Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[2026-03-19T16:37:04.517Z] [log] [HMR] connected
+[2026-03-19T16:37:18.036Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[2026-03-19T16:37:18.087Z] [log] [HMR] connected
+[2026-03-19T16:37:18.111Z] [warning] Image with src "/images/JC6A0348.jpeg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[2026-03-19T16:37:24.839Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[2026-03-19T16:37:24.884Z] [log] [HMR] connected
+[2026-03-19T16:37:24.954Z] [warning] Image with src "/images/charcuterie-board-closeup.jpg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[2026-03-19T16:38:05.117Z] [log] [Fast Refresh] rebuilding
+[2026-03-19T16:38:05.146Z] [log] [Fast Refresh] done in 29ms
+[2026-03-19T16:38:06.252Z] [log] [Fast Refresh] rebuilding
+[2026-03-19T16:38:06.281Z] [log] [Fast Refresh] done in 26ms
+[2026-03-19T16:38:13.354Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[2026-03-19T16:38:13.377Z] [log] [HMR] connected
+[2026-03-19T16:39:54.724Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[2026-03-19T16:39:54.761Z] [log] [HMR] connected
+[2026-03-19T16:39:54.764Z] [warning] Image with src "/images/JC6A0348.jpeg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[2026-03-19T16:40:07.364Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[2026-03-19T16:40:07.388Z] [log] [HMR] connected
+[2026-03-19T16:46:34.086Z] [log] [Fast Refresh] rebuilding
+[2026-03-19T16:46:34.115Z] [log] [Fast Refresh] done in 17ms
+[2026-03-19T16:47:06.501Z] [log] [Fast Refresh] rebuilding
+[2026-03-19T16:47:06.528Z] [log] [Fast Refresh] done in 39ms
+[2026-03-19T16:47:23.033Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[2026-03-19T16:47:23.055Z] [log] [HMR] connected
+[2026-03-19T16:47:23.065Z] [warning] Image with src "/images/charcuterie-board-closeup.jpg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[2026-03-19T16:47:23.067Z] [warning] Image with src "/images/JC6A0489.JPEG" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[2026-03-19T16:47:23.071Z] [warning] Image with src "/images/valentineboard.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[2026-03-19T16:47:49.037Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[2026-03-19T16:47:49.060Z] [log] [HMR] connected
+[2026-03-19T16:51:34.594Z] [log] [Fast Refresh] rebuilding
+[2026-03-19T16:51:34.625Z] [log] [Fast Refresh] done in 30ms
+[2026-03-19T16:52:02.149Z] [log] [Fast Refresh] rebuilding
+[2026-03-19T16:52:02.276Z] [log] [Fast Refresh] done in 200ms
+[2026-03-19T16:52:09.412Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[2026-03-19T16:52:09.445Z] [log] [HMR] connected
+[2026-03-19T16:52:09.467Z] [warning] Image with src "/images/charcuterie-board-closeup.jpg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[2026-03-19T16:52:09.469Z] [warning] Image with src "/images/JC6A0489.JPEG" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[2026-03-19T16:52:09.473Z] [warning] Image with src "/images/valentineboard.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[2026-03-19T16:52:37.746Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[2026-03-19T16:52:37.772Z] [log] [HMR] connected
+[2026-03-19T16:53:59.963Z] [log] [Fast Refresh] rebuilding
+[2026-03-19T16:54:00.067Z] [log] [Fast Refresh] done in 177ms
+[2026-03-19T16:54:11.385Z] [log] [Fast Refresh] rebuilding
+[2026-03-19T16:54:11.413Z] [log] [Fast Refresh] done in 53ms
+[2026-03-19T16:54:17.263Z] [log] [Fast Refresh] rebuilding
+[2026-03-19T16:54:17.538Z] [log] [Fast Refresh] done in 375ms
+[2026-03-19T16:54:24.003Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[2026-03-19T16:54:24.030Z] [log] [HMR] connected
+[2026-03-19T16:54:24.048Z] [warning] Image with src "/images/charcuterie-board-closeup.jpg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[2026-03-19T16:54:24.050Z] [warning] Image with src "/images/JC6A0489.JPEG" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[2026-03-19T16:54:24.054Z] [warning] Image with src "/images/valentineboard.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[2026-03-19T17:13:09.496Z] [log] [HMR] connected
+[2026-03-19T17:25:09.002Z] [log] [HMR] connected
