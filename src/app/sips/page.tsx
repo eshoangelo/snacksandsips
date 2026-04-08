@@ -106,6 +106,26 @@ function DrinkList({
 export default function SipsPage() {
   const signatureDrinks: Drink[] = [
     {
+      src: "/images/lemonade.PNG",
+      title: "Lemonade",
+      desc: "Fresh lemon balanced with just the right sweetness, finished into a bright, refreshing frozen classic. Perfect with or without alcohol.",
+    },
+    {
+      src: "/images/watermelon.PNG",
+      title: "Watermelon",
+      desc: "Sweet watermelon flavor blended into a smooth, refreshing frozen drink with a light, crisp finish.",
+    },
+    {
+      src: "/images/tropicalpunch.PNG",
+      title: "Tropical Punch",
+      desc: "Pineapple, orange, and lime blended into a vibrant, refreshing frozen punch with bright citrus and a smooth tropical finish.",
+    },
+    {
+      src: "/images/Peach Bellini.jpeg",
+      title: "Peach Bellini",
+      desc: "Sweet white peach blended into a smooth, refreshing frozen cocktail with a delicate fruity finish.",
+    },
+    {
       src: "/images/Birthday Cake.PNG",
       title: "Birthday Cake",
       desc: "Sweet vanilla cake flavor blended into a creamy frozen treat, topped with marshmallow fluff and festive sprinkles for a nostalgic finish.",
@@ -206,11 +226,6 @@ export default function SipsPage() {
       desc: "Classic bold orange soda, frozen and fun.",
     },
     {
-      src: "/images/Peach Bellini.jpeg",
-      title: "Peach Bellini",
-      desc: "Sweet white peach blended into a smooth, refreshing frozen cocktail with a delicate fruity finish.",
-    },
-    {
       src: "/images/Shirley Temple.PNG",
       title: "Shirley Temple",
       desc: "Crisp lemon lime and pomegranate sweetness blended into a vibrant, refreshing frozen classic.",
@@ -219,6 +234,16 @@ export default function SipsPage() {
       src: "/images/Peach Sweet Tea.PNG",
       title: "Peach Sweet Tea",
       desc: "Dye free. Smooth sweet tea infused with ripe peach, blended into a refreshing, lightly fruity frozen beverage.",
+    },
+    {
+      src: "/images/matcha.PNG",
+      title: "Matcha",
+      desc: "Smooth matcha blended with creamy coconut milk and subtle sweetness, finished into a rich, earthy, and refreshing frozen experience.",
+    },
+    {
+      src: "/images/margarita.PNG",
+      title: "Margarita",
+      desc: "Fresh lime and balanced sweetness blended into a bright, refreshing frozen margarita. Available in flavors like mango, strawberry, and peach.",
     },
   ];
 
