@@ -99,7 +99,8 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="bg-charcoal text-cream font-sans antialiased">
+      <body className="text-charcoal font-sans font-medium antialiased">
+        <div className="marble-fixed-bg" aria-hidden="true" />
         <Navbar />
         <main>{children}</main>
         <Footer />

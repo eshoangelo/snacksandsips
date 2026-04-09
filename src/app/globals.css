@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 @theme {
-  --color-gold: #c9a84c;
-  --color-gold-light: #d4b968;
-  --color-gold-dark: #a8883a;
+  --color-gold: #e6b733;
+  --color-gold-light: #f2cb55;
+  --color-gold-dark: #b8902a;
   --color-cream: #f5f0e8;
   --color-cream-dark: #e8dfd2;
   --color-charcoal: #1a1a1a;
@@ -13,9 +13,16 @@
   --font-sans: "Inter", system-ui, sans-serif;
 }
 
-/* Smooth scrolling */
-html {
+/* Smooth scrolling + no horizontal overflow */
+html, body {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+/* Make all serif headings heavier */
+.font-serif {
+  font-weight: 700;
 }
 
 /* Custom scrollbar */
@@ -23,7 +30,7 @@ html {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--color-charcoal);
+  background: var(--color-marble);
 }
 ::-webkit-scrollbar-thumb {
   background: var(--color-gold);
@@ -83,18 +90,35 @@ html {
   opacity: 0;
 }
 
-/* Marble texture background */
-.marble-bg {
-  background: linear-gradient(135deg, #f5f0e8 0%, #e8e2d6 25%, #f0ece4 50%, #e5dfd3 75%, #f5f0e8 100%);
+/* Fixed marble layer — sits behind all content, never seams */
+.marble-fixed-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image: url("/images/marble-texture.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-/* Video overlay */
+/* Carrara-style white marble with grey veining */
+.marble-bg {
+  background-color: #fafafa;
+  background-image:
+    radial-gradient(at 15% 20%, rgba(170, 175, 180, 0.22) 0px, transparent 50%),
+    radial-gradient(at 85% 15%, rgba(160, 165, 170, 0.18) 0px, transparent 45%),
+    radial-gradient(at 70% 70%, rgba(180, 185, 190, 0.20) 0px, transparent 55%),
+    radial-gradient(at 25% 85%, rgba(170, 175, 180, 0.18) 0px, transparent 50%),
+    linear-gradient(135deg, #ffffff 0%, #f2f3f5 30%, #fafbfc 60%, #ededef 100%);
+}
+
+/* Video overlay — dark fog for hero legibility */
 .hero-overlay {
   background: linear-gradient(
     to bottom,
-    rgba(0, 0, 0, 0.5) 0%,
-    rgba(0, 0, 0, 0.3) 50%,
-    rgba(0, 0, 0, 0.7) 100%
+    rgba(0, 0, 0, 0.62) 0%,
+    rgba(0, 0, 0, 0.45) 50%,
+    rgba(0, 0, 0, 0.75) 100%
   );
 }
 
@@ -102,8 +126,8 @@ html {
 .text-gold,
 .text-gold-dark {
   text-shadow:
-    0 0 12px rgba(201, 168, 76, 0.55),
-    0 0 30px rgba(201, 168, 76, 0.25);
+    0 0 6px rgba(230, 183, 51, 0.35),
+    0 0 14px rgba(230, 183, 51, 0.18);
 }
 
 /* Decorative separator */

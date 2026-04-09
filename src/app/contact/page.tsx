@@ -45,7 +45,7 @@ export default function ContactPage() {
       />
 
       {/* ───── Contact Info ───── */}
-      <section className="py-20 md:py-28 marble-bg">
+      <section className="py-20 md:py-28">
         <div className="max-w-5xl mx-auto px-6">
           <p className="text-center text-charcoal/60 text-lg leading-relaxed max-w-2xl mx-auto mb-16">
             Ready to bring the Snacks &amp; Sips experience to your next
@@ -211,7 +211,7 @@ export default function ContactPage() {
                   <button
                     type="submit"
                     disabled={status === "loading"}
-                    className="bg-charcoal text-gold px-12 py-4 tracking-[0.2em] uppercase text-sm hover:bg-gold hover:text-charcoal transition-all duration-500 border border-charcoal hover:border-gold disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="bg-gold text-charcoal px-12 py-4 tracking-[0.2em] uppercase text-sm hover:bg-gold-dark transition-all duration-500 border border-gold disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {status === "loading" ? "Sending..." : "Send Inquiry"}
                   </button>

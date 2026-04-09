@@ -31,7 +31,7 @@ export default function GalleryPage() {
       <PageHeader subtitle="A Glimpse" title="Gallery" />
 
       {/* ───── Photo Grid ───── */}
-      <section className="py-20 md:py-28 bg-charcoal">
+      <section className="py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-6">
           <div className="columns-2 md:columns-3 gap-4 space-y-4">
             {images.map((img, i) => (
@@ -54,13 +54,13 @@ export default function GalleryPage() {
       </section>
 
       {/* ───── Video Reel ───── */}
-      <section className="py-20 md:py-28 marble-bg">
+      <section className="py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
             <p className="text-gold-dark tracking-[0.3em] uppercase text-sm mb-4">
               In Motion
             </p>
-            <h2 className="font-serif text-4xl md:text-5xl text-charcoal mb-4">
+            <h2 className="font-serif text-4xl md:text-5xl text-gold-dark mb-4">
               Behind the Cart
             </h2>
             <div className="gold-separator mx-auto" />
@@ -94,12 +94,12 @@ export default function GalleryPage() {
       {/* ───── Lightbox ───── */}
       {lightbox !== null && (
         <div
-          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4"
           onClick={() => setLightbox(null)}
         >
           {/* Close */}
           <button
-            className="absolute top-6 right-6 text-white/70 hover:text-white text-3xl"
+            className="absolute top-6 right-6 text-charcoal/70 hover:text-charcoal text-3xl"
             onClick={() => setLightbox(null)}
           >
             &times;
@@ -107,7 +107,7 @@ export default function GalleryPage() {
 
           {/* Prev */}
           <button
-            className="absolute left-4 md:left-8 text-white/50 hover:text-gold text-4xl"
+            className="absolute left-4 md:left-8 text-charcoal/50 hover:text-gold text-4xl"
             onClick={(e) => {
               e.stopPropagation();
               setLightbox((lightbox - 1 + images.length) % images.length);
@@ -128,7 +128,7 @@ export default function GalleryPage() {
 
           {/* Next */}
           <button
-            className="absolute right-4 md:right-8 text-white/50 hover:text-gold text-4xl"
+            className="absolute right-4 md:right-8 text-charcoal/50 hover:text-gold text-4xl"
             onClick={(e) => {
               e.stopPropagation();
               setLightbox((lightbox + 1) % images.length);

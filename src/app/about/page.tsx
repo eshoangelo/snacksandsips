@@ -20,7 +20,7 @@ export default function AboutPage() {
       <PageHeader subtitle="Our Story" title="Where Nostalgia" titleAccent="Meets Luxury" />
 
       {/* ───── Story ───── */}
-      <section className="py-20 md:py-28 bg-charcoal">
+      <section className="py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div className="relative">
@@ -37,41 +37,41 @@ export default function AboutPage() {
             </div>
 
             <div>
-              <p className="text-cream/70 leading-relaxed text-lg mb-6">
+              <p className="text-charcoal/70 leading-relaxed text-lg mb-6">
                 Snacks &amp; Sips was created to bring a high end, beautifully
                 styled food and drink experience to every event. We specialize in
                 premium charcuterie style cuisine and handcrafted frozen beverages
                 made with quality ingredients, intentional detail, and refined
                 presentation.
               </p>
-              <p className="text-cream/70 leading-relaxed text-lg mb-6">
+              <p className="text-charcoal/70 leading-relaxed text-lg mb-6">
                 With subtle Middle Eastern influence woven into select offerings,
                 our menu blends tradition and creativity for a unique yet
                 approachable experience. Everything we serve reflects our
                 commitment to excellence, hospitality, and being a God centered
                 business rooted in integrity and gratitude.
               </p>
-              <p className="text-cream/70 leading-relaxed text-lg mb-10">
+              <p className="text-charcoal/70 leading-relaxed text-lg mb-10">
                 From intimate gatherings to large celebrations, we focus on
                 delivering luxury you can taste and presentation you won&apos;t forget.
               </p>
 
-              <div className="flex gap-12">
+              <div className="flex flex-wrap gap-6 sm:gap-12">
                 <div>
                   <span className="font-serif text-3xl text-gold">100%</span>
-                  <p className="text-cream/50 text-sm mt-1 tracking-wider uppercase">
+                  <p className="text-charcoal/60 text-sm mt-1 tracking-wider uppercase">
                     Handcrafted
                   </p>
                 </div>
                 <div>
                   <span className="font-serif text-3xl text-gold">Fresh</span>
-                  <p className="text-cream/50 text-sm mt-1 tracking-wider uppercase">
+                  <p className="text-charcoal/60 text-sm mt-1 tracking-wider uppercase">
                     Ingredients
                   </p>
                 </div>
                 <div>
                   <span className="font-serif text-3xl text-gold">Faith</span>
-                  <p className="text-cream/50 text-sm mt-1 tracking-wider uppercase">
+                  <p className="text-charcoal/60 text-sm mt-1 tracking-wider uppercase">
                     Centered
                   </p>
                 </div>
@@ -82,14 +82,14 @@ export default function AboutPage() {
       </section>
 
       {/* ───── The Experience ───── */}
-      <section className="py-20 md:py-28 marble-bg">
+      <section className="py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div>
               <p className="text-gold-dark tracking-[0.3em] uppercase text-sm mb-4">
                 The Experience
               </p>
-              <h2 className="font-serif text-4xl md:text-5xl text-charcoal mb-6 leading-tight">
+              <h2 className="font-serif text-4xl md:text-5xl text-gold-dark mb-6 leading-tight">
                 More Than Just
                 <br />
                 <span className="text-gold-dark italic">a Snack or a Sip</span>
@@ -147,13 +147,13 @@ export default function AboutPage() {
       </section>
 
       {/* ───── Values ───── */}
-      <section className="py-20 md:py-28 bg-charcoal">
+      <section className="py-20 md:py-28">
         <div className="max-w-5xl mx-auto px-6">
           <div className="text-center mb-16">
-            <p className="text-gold tracking-[0.3em] uppercase text-sm mb-4">
+            <p className="text-gold-dark tracking-[0.3em] uppercase text-sm mb-4">
               What We Stand For
             </p>
-            <h2 className="font-serif text-4xl md:text-5xl text-white mb-4">
+            <h2 className="font-serif text-4xl md:text-5xl text-gold-dark mb-4">
               Our Values
             </h2>
             <div className="gold-separator mx-auto" />
@@ -179,7 +179,7 @@ export default function AboutPage() {
                 <h3 className="font-serif text-2xl text-gold mb-4">
                   {v.title}
                 </h3>
-                <p className="text-cream/60 leading-relaxed">{v.desc}</p>
+                <p className="text-charcoal/70 leading-relaxed">{v.desc}</p>
               </div>
             ))}
           </div>

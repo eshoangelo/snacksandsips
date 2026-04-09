@@ -8,14 +8,14 @@ export default function PageHeader({
   titleAccent?: string;
 }) {
   return (
-    <div className="text-center pt-32 pb-16 md:pt-40 md:pb-20 bg-charcoal relative overflow-hidden">
+    <div className="text-center pt-32 pb-16 md:pt-40 md:pb-20 relative overflow-hidden">
       {/* Decorative line */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1px] h-20 bg-gradient-to-b from-transparent to-gold/30" />
 
       <p className="text-gold tracking-[0.3em] uppercase text-sm mb-4">
         {subtitle}
       </p>
-      <h1 className="font-serif text-5xl md:text-7xl text-white mb-4">
+      <h1 className="font-serif text-5xl md:text-7xl text-gold-dark mb-4">
         {title}
         {titleAccent && (
           <>

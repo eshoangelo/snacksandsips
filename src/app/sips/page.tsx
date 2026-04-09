@@ -18,7 +18,7 @@ function DrinkList({
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   return (
-    <section className="py-12 md:py-16 bg-charcoal relative overflow-hidden">
+    <section className="py-12 md:py-16 relative overflow-hidden">
       <div
         className="absolute inset-0 opacity-[0.03]"
         style={{
@@ -30,22 +30,22 @@ function DrinkList({
           <p className="text-gold-dark tracking-[0.3em] uppercase text-sm mb-3">
             {subtitle}
           </p>
-          <h2 className="font-serif text-3xl md:text-4xl text-cream mb-4">
+          <h2 className="font-serif text-3xl md:text-4xl text-gold-dark mb-4">
             {label}
           </h2>
           <div className="gold-separator mx-auto" />
         </div>
 
-        <div className="border-t border-gold/10">
+        <div className="border-t-[3px] border-gold/60">
           {drinks.map((drink, i) => (
-            <div key={i} className="border-b border-gold/10">
+            <div key={i} className="border-b-[3px] border-gold/60">
               <button
                 onClick={() => setActiveIndex(activeIndex === i ? null : i)}
                 className="w-full flex items-center justify-between py-4 sm:py-5 px-2 sm:px-4 group cursor-pointer"
               >
                 <span
                   className={`font-serif text-lg sm:text-xl md:text-2xl transition-colors duration-300 ${
-                    activeIndex === i ? "text-gold" : "text-cream/70 group-hover:text-cream"
+                    activeIndex === i ? "text-gold" : "text-charcoal/70 group-hover:text-charcoal"
                   }`}
                 >
                   {drink.title}
@@ -56,7 +56,7 @@ function DrinkList({
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
-                  strokeWidth="1.5"
+                  strokeWidth="3"
                   className={`text-gold/50 transition-transform duration-300 flex-shrink-0 ml-4 ${
                     activeIndex === i ? "rotate-180" : ""
                   }`}
@@ -88,7 +88,7 @@ function DrinkList({
                         {drink.title}
                       </h3>
                       <div className="w-8 h-[1px] bg-gold/40 mb-4" />
-                      <p className="text-cream/60 leading-relaxed text-sm md:text-base">
+                      <p className="text-charcoal/70 leading-relaxed text-sm md:text-base">
                         {drink.desc}
                       </p>
                     </div>
@@ -283,12 +283,12 @@ export default function SipsPage() {
       />
 
       {/* ───── Intro Section ───── */}
-      <section className="py-16 md:py-20 marble-bg">
+      <section className="py-16 md:py-20">
         <div className="max-w-3xl mx-auto px-6 text-center">
           <p className="text-gold-dark tracking-[0.3em] uppercase text-sm mb-4">
             Not Your Average Slush
           </p>
-          <h2 className="font-serif text-3xl md:text-4xl text-charcoal mb-6">
+          <h2 className="font-serif text-3xl md:text-4xl text-gold-dark mb-6">
             Crafted for Flavor, Texture & Beauty
           </h2>
           <div className="gold-separator mx-auto mb-8" />
@@ -342,13 +342,13 @@ export default function SipsPage() {
       />
 
       {/* ───── Drinks Video Section ───── */}
-      <section className="py-20 md:py-28 marble-bg">
+      <section className="py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-8">
             <p className="text-gold-dark tracking-[0.3em] uppercase text-sm mb-4">
               Watch Them Come to Life
             </p>
-            <h2 className="font-serif text-4xl md:text-5xl text-charcoal mb-4">
+            <h2 className="font-serif text-4xl md:text-5xl text-gold-dark mb-4">
               Crafted Fresh
             </h2>
             <div className="gold-separator mx-auto" />
@@ -370,8 +370,8 @@ export default function SipsPage() {
                 >
                   <source src={v.src} type="video/mp4" />
                 </video>
-                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/70 to-transparent flex items-end justify-center pb-6">
-                  <span className="font-serif text-lg text-white">{v.label}</span>
+                <div className="absolute inset-0 bg-gradient-to-t from-cream/80 to-transparent flex items-end justify-center pb-6">
+                  <span className="font-serif text-lg text-charcoal">{v.label}</span>
                 </div>
               </div>
             ))}

@@ -159,7 +159,7 @@ export default function Home() {
       </section>
 
       {/* ───── Teaser Sections ───── */}
-      <section className="py-24 md:py-32 bg-charcoal">
+      <section className="py-24 md:py-32">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div className="overflow-hidden">
@@ -174,16 +174,16 @@ export default function Home() {
               </video>
             </div>
             <div>
-              <p className="text-gold tracking-[0.3em] uppercase text-sm mb-4">
+              <p className="text-gold-dark tracking-[0.3em] uppercase text-sm mb-4">
                 Our Story
               </p>
-              <h2 className="font-serif text-4xl md:text-5xl text-white mb-6 leading-tight">
+              <h2 className="font-serif text-4xl md:text-5xl text-gold-dark mb-6 leading-tight">
                 Where Nostalgia
                 <br />
                 <span className="text-gold italic">Meets Luxury</span>
               </h2>
               <div className="gold-separator mb-6" />
-              <p className="text-cream/70 leading-relaxed text-lg mb-8">
+              <p className="text-charcoal/70 leading-relaxed text-lg mb-8">
                 Born from a love of gathering and the rich flavors of Middle
                 Eastern heritage, we bring a fresh take on the charcuterie
                 experience.
@@ -200,12 +200,12 @@ export default function Home() {
       </section>
 
       {/* ───── Boards Teaser ───── */}
-      <section className="py-24 md:py-32 marble-bg">
+      <section className="py-24 md:py-32">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <p className="text-gold-dark tracking-[0.3em] uppercase text-sm mb-4">
             Curated With Care
           </p>
-          <h2 className="font-serif text-4xl md:text-6xl text-charcoal mb-6">
+          <h2 className="font-serif text-4xl md:text-6xl text-gold-dark mb-6">
             The Boards
           </h2>
           <div className="gold-separator mx-auto mb-12" />
@@ -247,7 +247,7 @@ export default function Home() {
 
           <Link
             href="/boards"
-            className="inline-block mt-12 bg-charcoal text-gold px-10 py-4 tracking-[0.2em] uppercase text-sm hover:bg-gold hover:text-charcoal transition-all duration-500 border border-charcoal hover:border-gold"
+            className="inline-block mt-12 bg-gold text-charcoal px-10 py-4 tracking-[0.2em] uppercase text-sm hover:bg-gold-dark transition-all duration-500 border border-gold"
           >
             View All Boards
           </Link>
@@ -255,12 +255,12 @@ export default function Home() {
       </section>
 
       {/* ───── Sips Teaser ───── */}
-      <section className="py-24 md:py-32 bg-charcoal">
+      <section className="py-24 md:py-32">
         <div className="max-w-7xl mx-auto px-6 text-center">
-          <p className="text-gold tracking-[0.3em] uppercase text-sm mb-4">
+          <p className="text-gold-dark tracking-[0.3em] uppercase text-sm mb-4">
             Handcrafted Refreshments
           </p>
-          <h2 className="font-serif text-4xl md:text-6xl text-white mb-6">
+          <h2 className="font-serif text-4xl md:text-6xl text-gold-dark mb-6">
             The Sips
           </h2>
           <div className="gold-separator mx-auto mb-12" />
@@ -287,12 +287,12 @@ export default function Home() {
       </section>
 
       {/* ───── CTA ───── */}
-      <section className="py-24 md:py-32 marble-bg text-center">
+      <section className="py-24 md:py-32 text-center">
         <div className="max-w-3xl mx-auto px-6">
           <p className="text-gold-dark tracking-[0.3em] uppercase text-sm mb-4">
             Let&apos;s Create Something Special
           </p>
-          <h2 className="font-serif text-4xl md:text-6xl text-charcoal mb-6">
+          <h2 className="font-serif text-4xl md:text-6xl text-gold-dark mb-6">
             Transform Your Event
           </h2>
           <div className="gold-separator mx-auto mb-8" />
@@ -302,7 +302,7 @@ export default function Home() {
           </p>
           <Link
             href="/contact"
-            className="inline-block bg-charcoal text-gold px-12 py-4 tracking-[0.2em] uppercase text-sm hover:bg-gold hover:text-charcoal transition-all duration-500 border border-charcoal hover:border-gold"
+            className="inline-block bg-gold text-charcoal px-12 py-4 tracking-[0.2em] uppercase text-sm hover:bg-gold-dark transition-all duration-500 border border-gold"
           >
             Book Us
           </Link>

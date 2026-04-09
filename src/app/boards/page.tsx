@@ -22,7 +22,7 @@ export default function BoardsPage() {
       <PageHeader subtitle="Curated With Care" title="The Boards" />
 
       {/* ───── Classic Charcuterie ───── */}
-      <section className="py-20 md:py-28 marble-bg">
+      <section className="py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-6">
 
           {/* Section Label */}
@@ -30,7 +30,7 @@ export default function BoardsPage() {
             <p className="text-gold-dark tracking-[0.3em] uppercase text-sm mb-3">
               The Classics
             </p>
-            <h2 className="font-serif text-4xl md:text-5xl text-charcoal mb-4">
+            <h2 className="font-serif text-4xl md:text-5xl text-gold-dark mb-4">
               Classic Charcuterie Boards
             </h2>
             <div className="gold-separator mx-auto mb-6" />
@@ -133,7 +133,7 @@ export default function BoardsPage() {
       </section>
 
       {/* ───── Taste of Back Home ───── */}
-      <section className="py-20 md:py-28 bg-charcoal relative">
+      <section className="py-20 md:py-28 relative">
         <div
           className="absolute inset-0 opacity-[0.03]"
           style={{
@@ -148,11 +148,11 @@ export default function BoardsPage() {
             <p className="text-gold-dark tracking-[0.3em] uppercase text-sm mb-3">
               A Tribute to Tradition
             </p>
-            <h2 className="font-serif text-4xl md:text-5xl text-cream mb-4">
+            <h2 className="font-serif text-4xl md:text-5xl text-gold-dark mb-4">
               Taste of Back Home
             </h2>
             <div className="gold-separator mx-auto mb-6" />
-            <p className="text-cream/50 leading-relaxed text-lg max-w-2xl mx-auto">
+            <p className="text-charcoal/60 leading-relaxed text-lg max-w-2xl mx-auto">
               A celebration of Middle Eastern heritage — every ingredient either
               authentically imported or fresh made from locally sourced produce.
             </p>
@@ -173,11 +173,11 @@ export default function BoardsPage() {
               <p className="text-gold-dark tracking-[0.25em] uppercase text-xs mb-3">
                 Taste of Back Home
               </p>
-              <h3 className="font-serif text-3xl text-cream mb-4">
+              <h3 className="font-serif text-3xl text-charcoal mb-4">
                 Savory
               </h3>
               <div className="w-10 h-[1px] bg-gold mb-6" />
-              <p className="text-cream/60 leading-relaxed text-lg mb-6">
+              <p className="text-charcoal/70 leading-relaxed text-lg mb-6">
                 A rich spread of traditional Middle Eastern flavors — bold, savory
                 bites and authentic dips layered with comfort and depth.
               </p>
@@ -192,14 +192,14 @@ export default function BoardsPage() {
                   "Baba Ghanoush",
                   "Lebneh",
                 ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-3 text-cream/60">
+                  <div key={i} className="flex items-center gap-3 text-charcoal/70">
                     <div className="w-1.5 h-1.5 bg-gold rounded-full flex-shrink-0" />
                     <span className="text-sm">{item}</span>
                   </div>
                 ))}
               </div>
 
-              <p className="text-cream/80 leading-relaxed text-sm italic font-bold">
+              <p className="text-charcoal/80 leading-relaxed text-sm italic font-bold">
                 A curated nostalgic assortment of rotating seasonal favorites, including
                 grape leaves, sesame crackers, pickled vegetables, seasonal veggies, olives,
                 warm pita, nuts &amp; seeds — and more, based on what is in season and
@@ -223,11 +223,11 @@ export default function BoardsPage() {
               <p className="text-gold-dark tracking-[0.25em] uppercase text-xs mb-3">
                 Taste of Back Home
               </p>
-              <h3 className="font-serif text-3xl text-cream mb-4">
+              <h3 className="font-serif text-3xl text-charcoal mb-4">
                 Sweet
               </h3>
               <div className="w-10 h-[1px] bg-gold mb-6" />
-              <p className="text-cream/60 leading-relaxed text-lg mb-6">
+              <p className="text-charcoal/70 leading-relaxed text-lg mb-6">
                 A beautifully styled selection of nostalgic Middle Eastern sweets
                 &amp; fruits, paired with creamy, indulgent dips that elevate every bite.
               </p>
@@ -245,14 +245,14 @@ export default function BoardsPage() {
                   "Organic Honey",
                   "Nutella",
                 ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-3 text-cream/60">
+                  <div key={i} className="flex items-center gap-3 text-charcoal/70">
                     <div className="w-1.5 h-1.5 bg-gold rounded-full flex-shrink-0" />
                     <span className="text-sm">{item}</span>
                   </div>
                 ))}
               </div>
 
-              <p className="text-cream/80 leading-relaxed text-sm italic font-bold">
+              <p className="text-charcoal/80 leading-relaxed text-sm italic font-bold">
                 A curated nostalgic assortment of rotating seasonal favorites, including
                 warm pita, baklava, kleicha, Turkish delights, fresh fruit, dried apricots,
                 dates, kamardeen — and more, based on what is in season and what we&apos;re
@@ -265,14 +265,14 @@ export default function BoardsPage() {
       </section>
 
       {/* ───── Custom Boards CTA ───── */}
-      <section className="py-20 md:py-28 marble-bg">
+      <section className="py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <p className="text-gold tracking-[0.3em] uppercase text-sm mb-4">
                 For Every Occasion
               </p>
-              <h2 className="font-serif text-4xl md:text-5xl text-charcoal mb-6 leading-tight">
+              <h2 className="font-serif text-4xl md:text-5xl text-gold-dark mb-6 leading-tight">
                 Custom Boards
                 <br />
                 <span className="text-gold italic">Made for You</span>

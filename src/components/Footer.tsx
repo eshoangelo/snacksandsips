@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="bg-charcoal border-t border-gold/10 py-12">
+    <footer className="border-t-2 border-gold/50 py-12">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid md:grid-cols-3 gap-8 items-center">
           {/* Logo */}
@@ -23,7 +23,7 @@ export default function Footer() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-cream/40 hover:text-gold text-xs tracking-[0.15em] uppercase transition-colors duration-300"
+                className="text-charcoal/60 hover:text-gold text-xs tracking-[0.15em] uppercase transition-colors duration-300"
               >
                 {link.label}
               </Link>
@@ -32,7 +32,7 @@ export default function Footer() {
 
           {/* Copyright + Socials */}
           <div className="flex flex-col items-center md:items-end gap-3">
-            <p className="text-cream/30 text-xs tracking-wider">
+            <p className="text-charcoal/50 text-xs tracking-wider">
               &copy; {new Date().getFullYear()} Snacks &amp; Sips
             </p>
           </div>
