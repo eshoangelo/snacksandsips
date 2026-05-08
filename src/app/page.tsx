@@ -9,6 +9,8 @@ const allSips = [
   { src: "/images/pink-strawberry-slush.png", title: "Raspberry Frosé" },
   { src: "/images/yellow-mango-slush.png", title: "Mimosa" },
   { src: "/images/blue-mango-cup.png", title: "Blue Lagoon" },
+  { src: "/images/blue-raspberry.PNG", title: "Blue Raspberry" },
+  { src: "/images/tropical-blue.jpeg", title: "Tropical Blue" },
   { src: "/images/frozenhotchoclate.PNG", title: "Frozen Hot Chocolate" },
   { src: "/images/pinacolada.PNG", title: "Piña Colada" },
   { src: "/images/dreamsicle.PNG", title: "Dreamsicle" },

@@ -146,6 +146,16 @@ export default function SipsPage() {
       desc: "Bright lemonade blended with blue spirulina, frozen into a smooth, tangy sweet/sour slush with a refreshing tropical twist. Available dye free.",
     },
     {
+      src: "/images/blue-raspberry.PNG",
+      title: "Blue Raspberry",
+      desc: "Bright blue raspberry flavor blended into a smooth, refreshing frozen treat with the perfect sweet tart finish.",
+    },
+    {
+      src: "/images/tropical-blue.jpeg",
+      title: "Tropical Blue",
+      desc: "Coconut and pineapple flavors blended into a smooth, tropical frozen drink with a bright island inspired finish.",
+    },
+    {
       src: "/images/frozenhotchoclate.PNG",
       title: "Frozen Hot Chocolate",
       desc: "Dye free. Rich, creamy chocolate blended ice cold.",
