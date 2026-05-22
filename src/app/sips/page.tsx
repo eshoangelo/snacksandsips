@@ -131,9 +131,14 @@ export default function SipsPage() {
       desc: "Sweet vanilla cake flavor blended into a creamy frozen treat, topped with marshmallow fluff and festive sprinkles for a nostalgic finish.",
     },
     {
-      src: "/images/pink-strawberry-slush.png",
-      title: "Raspberry Fros\u00e9",
-      desc: "Smooth ros\u00e9 wine with a raspberry pur\u00e9e twist.",
+      src: "/images/frose.png",
+      title: "Fros\u00e9",
+      desc: "Ros\u00e9 wine blended into a smooth, refreshing frozen cocktail with bright fruit flavor and a crisp, elegant finish. Can be made nonalcoholic.",
+    },
+    {
+      src: "/images/strawberry.png",
+      title: "Strawberry",
+      desc: "Made with real organic pur\u00e9ed strawberries and blended into a refreshing frozen drink with a bright, fruity finish.",
     },
     {
       src: "/images/yellow-mango-slush.png",
