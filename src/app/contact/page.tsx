@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import PageHeader from "@/components/PageHeader";
+import DatePicker from "@/components/DatePicker";
+import TimePicker from "@/components/TimePicker";
 
 export default function ContactPage() {
   const [form, setForm] = useState({
@@ -9,11 +11,14 @@ export default function ContactPage() {
     email: "",
     eventType: "",
     eventDate: "",
+    eventTime: "",
+    eventLocation: "",
     partySize: "",
     menuSelection: "",
     message: "",
   });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [attempted, setAttempted] = useState(false);
 
   function handleChange(
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -24,7 +29,10 @@ export default function ContactPage() {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) return;
-    if (parseInt(form.partySize) < 50) return;
+    if (!form.eventDate || !form.eventTime) {
+      setAttempted(true);
+      return;
+    }
     setStatus("loading");
 
     const res = await fetch("/api/contact", {
@@ -104,18 +112,50 @@ export default function ContactPage() {
                   </div>
                 </div>
 
-                {/* Row 2: inputs — Event Date | Party Size */}
+                {/* Row 2: inputs — Event Date | Event Time */}
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-charcoal/60 text-sm tracking-wider uppercase mb-2">
                       Event Date
                     </label>
-                    <input
-                      type="date"
-                      name="eventDate"
+                    <DatePicker
                       value={form.eventDate}
+                      onChange={(v) => setForm((prev) => ({ ...prev, eventDate: v }))}
+                      invalid={attempted && !form.eventDate}
+                    />
+                    {attempted && !form.eventDate && (
+                      <p className="text-red-400 text-xs mt-1">Please select a date.</p>
+                    )}
+                  </div>
+                  <div>
+                    <label className="block text-charcoal/60 text-sm tracking-wider uppercase mb-2">
+                      Event Time
+                    </label>
+                    <TimePicker
+                      value={form.eventTime}
+                      onChange={(v) => setForm((prev) => ({ ...prev, eventTime: v }))}
+                      invalid={attempted && !form.eventTime}
+                    />
+                    {attempted && !form.eventTime && (
+                      <p className="text-red-400 text-xs mt-1">Please select a time.</p>
+                    )}
+                  </div>
+                </div>
+
+                {/* Row 3: Exact Location | Party Size */}
+                <div className="grid sm:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-charcoal/60 text-sm tracking-wider uppercase mb-2">
+                      Exact Location
+                    </label>
+                    <input
+                      type="text"
+                      name="eventLocation"
+                      required
+                      value={form.eventLocation}
                       onChange={handleChange}
                       className="w-full border-b border-charcoal/20 bg-transparent py-3 text-charcoal focus:border-gold focus:outline-none transition-colors"
+                      placeholder="Venue name & full address"
                     />
                   </div>
                   <div>
@@ -126,26 +166,19 @@ export default function ContactPage() {
                       type="number"
                       name="partySize"
                       required
-                      min={50}
+                      min={1}
                       value={form.partySize}
                       onChange={handleChange}
                       onKeyDown={(e) => {
                         if (["e", "E", "+", "-", "."].includes(e.key)) e.preventDefault();
                       }}
-                      className={`w-full border-b bg-transparent py-3 text-charcoal focus:outline-none transition-colors [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none ${
-                        form.partySize && parseInt(form.partySize) < 50
-                          ? "border-red-400 focus:border-red-400"
-                          : "border-charcoal/20 focus:border-gold"
-                      }`}
-                      placeholder="Minimum 50"
+                      className="w-full border-b border-charcoal/20 bg-transparent py-3 text-charcoal focus:border-gold focus:outline-none transition-colors [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                      placeholder="Number of guests"
                     />
-                    {form.partySize && parseInt(form.partySize) < 50 && (
-                      <p className="text-red-400 text-xs mt-1">Minimum party size is 50.</p>
-                    )}
                   </div>
                 </div>
 
-                {/* Row 3: dropdowns — Event Type | Menu */}
+                {/* Row 4: dropdowns — Event Type | Menu */}
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-charcoal/60 text-sm tracking-wider uppercase mb-2">

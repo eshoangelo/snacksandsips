@@ -118,14 +118,21 @@ export default function Home() {
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
         >
-          <source src="/videos/HoneyOnBoard.mov" type="video/mp4" />
+          <source src="/videos/DrinksHero.mp4" type="video/mp4" />
         </video>
 
         <div className="hero-overlay absolute inset-0" />
 
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6">
           <div className="animate-fade-in-up">
-            <h1 className="font-serif text-6xl md:text-8xl lg:text-9xl tracking-[0.15em] text-white font-semibold">
+            <h1
+              className="font-serif text-6xl md:text-8xl lg:text-9xl tracking-[0.15em] text-white font-semibold"
+              style={{
+                color: "#ffffff",
+                filter:
+                  "drop-shadow(0 1px 2px rgba(0,0,0,0.55)) drop-shadow(0 3px 14px rgba(0,0,0,0.45))",
+              }}
+            >
               SNACKS
             </h1>
             <div className="flex items-center justify-center gap-4 my-2">
@@ -135,21 +142,31 @@ export default function Home() {
               </span>
               <div className="w-16 md:w-24 h-[1px] bg-gold" />
             </div>
-            <h1 className="font-serif text-6xl md:text-8xl lg:text-9xl tracking-[0.15em] text-white font-semibold">
+            <h1
+              className="font-serif text-6xl md:text-8xl lg:text-9xl tracking-[0.15em] text-white font-semibold"
+              style={{
+                color: "#ffffff",
+                filter:
+                  "drop-shadow(0 1px 2px rgba(0,0,0,0.55)) drop-shadow(0 3px 14px rgba(0,0,0,0.45))",
+              }}
+            >
               SIPS
             </h1>
           </div>
 
           <p
             className="animate-fade-in-up-delay-1 mt-8 text-lg md:text-xl tracking-[0.2em] uppercase font-light max-w-xl gold-shimmer"
-            style={{ textShadow: "0 0 18px rgba(201,168,76,0.6), 0 0 40px rgba(201,168,76,0.3)" }}
+            style={{
+              WebkitTextStroke: "0.3px rgba(0,0,0,0.3)",
+              filter: "drop-shadow(0 2px 6px rgba(0,0,0,0.55))",
+            }}
           >
             Luxury Charcuterie &middot; Frozen Cocktails &amp; Mocktails
           </p>
 
           <Link
             href="/about"
-            className="animate-fade-in-up-delay-2 mt-12 border border-gold text-gold px-10 py-4 tracking-[0.2em] uppercase text-sm hover:bg-gold hover:text-charcoal transition-all duration-500"
+            className="animate-fade-in-up-delay-2 mt-12 border border-gold bg-gold text-charcoal px-10 py-4 tracking-[0.2em] uppercase text-sm shadow-lg hover:bg-transparent hover:text-gold transition-all duration-500"
           >
             Discover More
           </Link>

@@ -106,6 +106,11 @@ function DrinkList({
 export default function SipsPage() {
   const signatureDrinks: Drink[] = [
     {
+      src: "/images/margarita.PNG",
+      title: "Margarita",
+      desc: "Fresh lime and balanced sweetness blended into a bright, refreshing frozen margarita. Available in flavors like mango, strawberry, and peach.",
+    },
+    {
       src: "/images/lemonade.PNG",
       title: "Lemonade",
       desc: "Fresh lemon balanced with just the right sweetness, finished into a bright, refreshing frozen classic. Perfect with or without alcohol.",
@@ -250,19 +255,14 @@ export default function SipsPage() {
       title: "Peach Sweet Tea",
       desc: "Dye free. Smooth sweet tea infused with ripe peach, blended into a refreshing, lightly fruity frozen beverage.",
     },
+  ];
+
+  const coffeeDrinks: Drink[] = [
     {
       src: "/images/matcha.PNG",
       title: "Matcha",
       desc: "Smooth matcha blended with creamy coconut milk and subtle sweetness, finished into a rich, earthy, and refreshing frozen experience.",
     },
-    {
-      src: "/images/margarita.PNG",
-      title: "Margarita",
-      desc: "Fresh lime and balanced sweetness blended into a bright, refreshing frozen margarita. Available in flavors like mango, strawberry, and peach.",
-    },
-  ];
-
-  const coffeeDrinks: Drink[] = [
     {
       src: "/images/pistachio-caramel-cup.png",
       title: "Pistachio Latte",
@@ -349,10 +349,10 @@ export default function SipsPage() {
         subtitle="Frozen &amp; Fresh"
       />
 
-      {/* ───── Coffee Sips List ───── */}
+      {/* ───── Premium Flavors List ───── */}
       <DrinkList
         drinks={coffeeDrinks}
-        label="Coffee Sips"
+        label="Premium Flavors"
         subtitle="Bold &amp; Smooth"
       />
 

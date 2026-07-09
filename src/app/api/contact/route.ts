@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req: Request) {
-  const { name, email, eventType, eventDate, partySize, menuSelection, message } = await req.json();
+  const { name, email, eventType, eventDate, eventTime, eventLocation, partySize, menuSelection, message } = await req.json();
 
   const menuLabels: Record<string, string> = {
     "halal": "Halal",
@@ -93,6 +93,22 @@ export async function POST(req: Request) {
                         <td style="padding:14px 0;border-bottom:1px solid #2a2a2a;">
                           <p style="margin:0 0 4px;font-family:Arial,sans-serif;font-size:10px;letter-spacing:0.2em;color:#c9a84c;text-transform:uppercase;">Event Date</p>
                           <p style="margin:0;font-family:Georgia,serif;font-size:16px;color:#f5f0e8;">${eventDate || "Not specified"}</p>
+                        </td>
+                      </tr>
+
+                      <!-- Event Time -->
+                      <tr>
+                        <td style="padding:14px 0;border-bottom:1px solid #2a2a2a;">
+                          <p style="margin:0 0 4px;font-family:Arial,sans-serif;font-size:10px;letter-spacing:0.2em;color:#c9a84c;text-transform:uppercase;">Event Time</p>
+                          <p style="margin:0;font-family:Georgia,serif;font-size:16px;color:#f5f0e8;">${eventTime || "Not specified"}</p>
+                        </td>
+                      </tr>
+
+                      <!-- Exact Location -->
+                      <tr>
+                        <td style="padding:14px 0;border-bottom:1px solid #2a2a2a;">
+                          <p style="margin:0 0 4px;font-family:Arial,sans-serif;font-size:10px;letter-spacing:0.2em;color:#c9a84c;text-transform:uppercase;">Exact Location</p>
+                          <p style="margin:0;font-family:Georgia,serif;font-size:16px;color:#f5f0e8;">${eventLocation || "Not specified"}</p>
                         </td>
                       </tr>
 
