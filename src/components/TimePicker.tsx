@@ -1,16 +1,24 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
-// Build 15-minute slots for a full 24h day: "12:00 AM" ... "11:45 PM"
-const SLOTS: string[] = [];
-for (let h = 0; h < 24; h++) {
-  const meridiem = h < 12 ? "AM" : "PM";
-  const hour12 = h % 12 === 0 ? 12 : h % 12;
-  for (const m of [0, 15, 30, 45]) {
-    SLOTS.push(`${hour12}:${String(m).padStart(2, "0")} ${meridiem}`);
+type Meridiem = "AM" | "PM";
+
+// Build 15-minute slots for one meridiem: "12:00 PM" ... "11:45 PM"
+function slotsFor(meridiem: Meridiem): string[] {
+  const startHour = meridiem === "AM" ? 0 : 12;
+  const slots: string[] = [];
+  for (let h = startHour; h < startHour + 12; h++) {
+    const hour12 = h % 12 === 0 ? 12 : h % 12;
+    for (const m of [0, 15, 30, 45]) {
+      slots.push(`${hour12}:${String(m).padStart(2, "0")} ${meridiem}`);
+    }
   }
+  return slots;
 }
+
+const AM_SLOTS = slotsFor("AM");
+const PM_SLOTS = slotsFor("PM");
 
 export default function TimePicker({
   value,
@@ -22,9 +30,14 @@ export default function TimePicker({
   invalid?: boolean;
 }) {
   const [open, setOpen] = useState(false);
+  // Default to PM — nearly every event is afternoon/evening, so choosing an
+  // AM time should be a deliberate tap, not the accidental first option.
+  const [meridiem, setMeridiem] = useState<Meridiem>("PM");
   const ref = useRef<HTMLDivElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
   const selectedRef = useRef<HTMLButtonElement>(null);
+
+  const slots = meridiem === "AM" ? AM_SLOTS : PM_SLOTS;
 
   useEffect(() => {
     function onDoc(e: MouseEvent) {
@@ -43,12 +56,19 @@ export default function TimePicker({
     };
   }, [open]);
 
-  // Center the selected time when the list opens.
+  // When opening, show the meridiem of the current value (or default to PM).
+  useEffect(() => {
+    if (open && value) {
+      setMeridiem(value.endsWith("AM") ? "AM" : "PM");
+    }
+  }, [open, value]);
+
+  // Center the selected time when the list opens or the meridiem changes.
   useEffect(() => {
     if (open && selectedRef.current) {
       selectedRef.current.scrollIntoView({ block: "center" });
     }
-  }, [open]);
+  }, [open, meridiem]);
 
   return (
     <div className="relative" ref={ref}>
@@ -70,8 +90,26 @@ export default function TimePicker({
 
       {open && (
         <div className="absolute z-30 mt-2 w-full bg-white shadow-2xl border border-charcoal/10">
+          {/* AM / PM toggle — defaults to PM so evening times are what users see first */}
+          <div className="flex p-1 gap-1 border-b border-charcoal/10">
+            {(["AM", "PM"] as Meridiem[]).map((m) => (
+              <button
+                key={m}
+                type="button"
+                onClick={() => setMeridiem(m)}
+                className={`flex-1 py-2 text-sm tracking-wider transition-colors ${
+                  meridiem === m
+                    ? "bg-charcoal text-gold font-medium"
+                    : "text-charcoal/60 hover:bg-gold/15"
+                }`}
+              >
+                {m}
+              </button>
+            ))}
+          </div>
+
           <div ref={listRef} className="max-h-60 overflow-y-auto thin-scroll py-1">
-            {SLOTS.map((slot) => {
+            {slots.map((slot) => {
               const isSel = slot === value;
               return (
                 <button
