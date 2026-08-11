@@ -186,11 +186,6 @@ export default function SipsPage() {
       desc: "Dye free. Sweet pineapple with a subtle habanero kick, frozen into a bold, tropical slush with a smooth heat.",
     },
     {
-      src: "/images/strawberry-kiwi-fizz.png",
-      title: "Strawberry Kiwi Fizz",
-      desc: "Juicy strawberry and bright kiwi blended into a smooth, refreshing slush with a crisp, fruity finish. Can be made dye free.",
-    },
-    {
       src: "/images/bajablast.PNG",
       title: "Baja Blast",
       desc: "Tropical lime citrus blended into an icy, electric-green summer classic.",

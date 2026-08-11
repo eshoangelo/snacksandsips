@@ -15,7 +15,6 @@ const allSips = [
   { src: "/images/pinacolada.PNG", title: "Piña Colada" },
   { src: "/images/dreamsicle.PNG", title: "Dreamsicle" },
   { src: "/images/pineapple-habanero.png", title: "Pineapple Habanero" },
-  { src: "/images/strawberry-kiwi-fizz.png", title: "Strawberry Kiwi Fizz" },
   { src: "/images/bajablast.PNG", title: "Baja Blast" },
   { src: "/images/pinkstarburst.PNG", title: "Pink Starburst" },
   { src: "/images/kiwicoconut.PNG", title: "Kiwi Coconut" },
