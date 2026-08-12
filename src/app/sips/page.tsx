@@ -166,11 +166,6 @@ export default function SipsPage() {
       desc: "Coconut and pineapple flavors blended into a smooth, tropical frozen drink with a bright island inspired finish.",
     },
     {
-      src: "/images/frozenhotchoclate.PNG",
-      title: "Frozen Hot Chocolate",
-      desc: "Dye free. Rich, creamy chocolate blended ice cold.",
-    },
-    {
       src: "/images/pinacolada.PNG",
       title: "Pi\u00f1a Colada",
       desc: "Creamy coconut and pineapple frozen into a tropical, smooth, vacation in a cup.",
@@ -282,6 +277,11 @@ export default function SipsPage() {
       src: "/images/HazelnutLatte.PNG",
       title: "Hazelnut Latte",
       desc: "Dye free. Bold coffee blended with smooth hazelnut and cream, finished into a rich, nutty frozen coffee experience.",
+    },
+    {
+      src: "/images/frozenhotchoclate.PNG",
+      title: "Frozen Hot Chocolate",
+      desc: "Dye free. Rich, creamy chocolate blended ice cold.",
     },
   ];
 
