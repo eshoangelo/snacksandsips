@@ -283,6 +283,11 @@ export default function SipsPage() {
       title: "Frozen Hot Chocolate",
       desc: "Dye free. Rich, creamy chocolate blended ice cold.",
     },
+    {
+      src: "/images/mangonada.jpeg",
+      title: "Mangonada",
+      desc: "Real mango puree slush layered with chamoy and tajín, topped with juicy mango chunks and a tamarindo straw.",
+    },
   ];
 
   return (
