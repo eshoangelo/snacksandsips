@@ -10,11 +10,13 @@ export default function ContactPage() {
     name: "",
     email: "",
     eventType: "",
+    eventTypeOther: "",
     eventDate: "",
     eventTime: "",
     eventLocation: "",
     partySize: "",
     menuSelection: "",
+    flavorCount: "",
     message: "",
   });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
@@ -29,6 +31,7 @@ export default function ContactPage() {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) return;
+    if (form.eventType === "other" && !form.eventTypeOther.trim()) return;
     if (!form.eventDate || !form.eventTime) {
       setAttempted(true);
       return;
@@ -38,7 +41,11 @@ export default function ContactPage() {
     const res = await fetch("/api/contact", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(form),
+      body: JSON.stringify({
+        ...form,
+        eventTypeOther: form.eventType === "other" ? form.eventTypeOther.trim() : "",
+        flavorCount: form.menuSelection === "frozen-cocktails-mocktails" ? form.flavorCount : "",
+      }),
     });
 
     setStatus(res.ok ? "success" : "error");
@@ -77,7 +84,7 @@ export default function ContactPage() {
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-charcoal/60 text-sm tracking-wider uppercase mb-2">
-                      Name
+                      Name <span className="text-red-400">*</span>
                     </label>
                     <input
                       type="text"
@@ -91,7 +98,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <label className="block text-charcoal/60 text-sm tracking-wider uppercase mb-2">
-                      Email
+                      Email <span className="text-red-400">*</span>
                     </label>
                     <input
                       type="email"
@@ -116,7 +123,7 @@ export default function ContactPage() {
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-charcoal/60 text-sm tracking-wider uppercase mb-2">
-                      Event Date
+                      Event Date <span className="text-red-400">*</span>
                     </label>
                     <DatePicker
                       value={form.eventDate}
@@ -129,7 +136,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <label className="block text-charcoal/60 text-sm tracking-wider uppercase mb-2">
-                      Event Time
+                      Event Time <span className="text-red-400">*</span>
                     </label>
                     <TimePicker
                       value={form.eventTime}
@@ -146,7 +153,7 @@ export default function ContactPage() {
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-charcoal/60 text-sm tracking-wider uppercase mb-2">
-                      Exact Location
+                      Exact Location <span className="text-red-400">*</span>
                     </label>
                     <input
                       type="text"
@@ -160,7 +167,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <label className="block text-charcoal/60 text-sm tracking-wider uppercase mb-2">
-                      Number of People in Party
+                      Number of People in Party <span className="text-red-400">*</span>
                     </label>
                     <input
                       type="number"
@@ -182,10 +189,11 @@ export default function ContactPage() {
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-charcoal/60 text-sm tracking-wider uppercase mb-2">
-                      Event Type
+                      Event Type <span className="text-red-400">*</span>
                     </label>
                     <select
                       name="eventType"
+                      required
                       value={form.eventType}
                       onChange={handleChange}
                       className="w-full border-b border-charcoal/20 bg-transparent py-3 text-charcoal focus:border-gold focus:outline-none transition-colors"
@@ -198,10 +206,32 @@ export default function ContactPage() {
                       <option value="ramadan">Ramadan Gathering</option>
                       <option value="other">Other</option>
                     </select>
+                    {attempted && !form.eventType && (
+                      <p className="text-red-400 text-xs mt-1">Please select an event type.</p>
+                    )}
+                    {form.eventType === "other" && (
+                      <div className="mt-6">
+                        <label className="block text-charcoal/60 text-sm tracking-wider uppercase mb-2">
+                          Describe Your Event <span className="text-red-400">*</span>
+                        </label>
+                        <input
+                          type="text"
+                          name="eventTypeOther"
+                          required
+                          value={form.eventTypeOther}
+                          onChange={handleChange}
+                          className="w-full border-b border-charcoal/20 bg-transparent py-3 text-charcoal focus:border-gold focus:outline-none transition-colors"
+                          placeholder="e.g. Graduation party"
+                        />
+                        {attempted && !form.eventTypeOther.trim() && (
+                          <p className="text-red-400 text-xs mt-1">Please describe your event.</p>
+                        )}
+                      </div>
+                    )}
                   </div>
                   <div>
                     <label className="block text-charcoal/60 text-sm tracking-wider uppercase mb-2">
-                      Menu
+                      Menu <span className="text-red-400">*</span>
                     </label>
                     <select
                       name="menuSelection"
@@ -216,12 +246,36 @@ export default function ContactPage() {
                       <option value="taste-of-back-home-sweet">Taste of Back Home Sweet</option>
                       <option value="frozen-cocktails-mocktails">Frozen Cocktails/Mocktails</option>
                     </select>
+                    {attempted && !form.menuSelection && (
+                      <p className="text-red-400 text-xs mt-1">Please select a menu.</p>
+                    )}
+                    {form.menuSelection === "frozen-cocktails-mocktails" && (
+                      <div className="mt-6">
+                        <label className="block text-charcoal/60 text-sm tracking-wider uppercase mb-2">
+                          Number of Flavors <span className="text-red-400">*</span>
+                        </label>
+                        <select
+                          name="flavorCount"
+                          required
+                          value={form.flavorCount}
+                          onChange={handleChange}
+                          className="w-full border-b border-charcoal/20 bg-transparent py-3 text-charcoal focus:border-gold focus:outline-none transition-colors"
+                        >
+                          <option value="">Select one or two flavors</option>
+                          <option value="1">One flavor</option>
+                          <option value="2">Two flavors</option>
+                        </select>
+                        {attempted && !form.flavorCount && (
+                          <p className="text-red-400 text-xs mt-1">Please choose one or two flavors.</p>
+                        )}
+                      </div>
+                    )}
                   </div>
                 </div>
 
                 <div>
                   <label className="block text-charcoal/60 text-sm tracking-wider uppercase mb-2">
-                    Message
+                    Message <span className="text-red-400">*</span>
                   </label>
                   <textarea
                     name="message"
@@ -243,6 +297,7 @@ export default function ContactPage() {
                 <div className="text-center pt-4">
                   <button
                     type="submit"
+                    onClick={() => setAttempted(true)}
                     disabled={status === "loading"}
                     className="bg-charcoal text-gold px-12 py-4 tracking-[0.2em] uppercase text-sm hover:bg-gold hover:text-charcoal transition-all duration-500 border border-charcoal hover:border-gold disabled:opacity-50 disabled:cursor-not-allowed"
                   >

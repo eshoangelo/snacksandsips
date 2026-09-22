@@ -4,7 +4,20 @@ import { NextResponse } from "next/server";
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req: Request) {
-  const { name, email, eventType, eventDate, eventTime, eventLocation, partySize, menuSelection, message } = await req.json();
+  const { name, email, eventType, eventTypeOther, eventDate, eventTime, eventLocation, partySize, menuSelection, flavorCount, message } = await req.json();
+
+  if (!eventType) {
+    return NextResponse.json({ error: "Please select an event type." }, { status: 400 });
+  }
+  if (eventType === "other" && !eventTypeOther?.trim()) {
+    return NextResponse.json({ error: "Please describe your event type." }, { status: 400 });
+  }
+  if (menuSelection === "frozen-cocktails-mocktails" && !["1", "2"].includes(flavorCount)) {
+    return NextResponse.json({ error: "Please choose one or two flavors." }, { status: 400 });
+  }
+
+  const eventTypeDisplay =
+    eventType === "other" ? `Other — ${escapeHtml(eventTypeOther.trim())}` : undefined;
 
   const menuLabels: Record<string, string> = {
     "halal": "Halal",
@@ -84,7 +97,7 @@ export async function POST(req: Request) {
                       <tr>
                         <td style="padding:14px 0;border-bottom:1px solid #2a2a2a;">
                           <p style="margin:0 0 4px;font-family:Arial,sans-serif;font-size:10px;letter-spacing:0.2em;color:#c9a84c;text-transform:uppercase;">Event Type</p>
-                          <p style="margin:0;font-family:Georgia,serif;font-size:16px;color:#f5f0e8;">${eventTypeLabels[eventType] || eventType || "Not specified"}</p>
+                          <p style="margin:0;font-family:Georgia,serif;font-size:16px;color:#f5f0e8;">${eventTypeDisplay || eventTypeLabels[eventType] || "Not specified"}</p>
                         </td>
                       </tr>
 
@@ -128,6 +141,16 @@ export async function POST(req: Request) {
                         </td>
                       </tr>
 
+                      ${menuSelection === "frozen-cocktails-mocktails" ? `
+                      <!-- Flavor Count -->
+                      <tr>
+                        <td style="padding:14px 0;border-bottom:1px solid #2a2a2a;">
+                          <p style="margin:0 0 4px;font-family:Arial,sans-serif;font-size:10px;letter-spacing:0.2em;color:#c9a84c;text-transform:uppercase;">Frozen Drink Flavors</p>
+                          <p style="margin:0;font-family:Georgia,serif;font-size:16px;color:#f5f0e8;">${flavorCount === "2" ? "Two flavors" : "One flavor"}</p>
+                        </td>
+                      </tr>
+                      ` : ""}
+
                       <!-- Message -->
                       <tr>
                         <td style="padding:14px 0;">
@@ -166,4 +189,13 @@ export async function POST(req: Request) {
   }
 
   return NextResponse.json({ success: true });
+}
+
+function escapeHtml(value: string) {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
 }
