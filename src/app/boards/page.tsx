@@ -69,7 +69,8 @@ export default function BoardsPage() {
                   "Salami",
                   "Summer Sausage",
                   "Prosciutto",
-                  "Turkey",
+                  "Turkey Sausage Bites",
+                  "Organic Turkey Breast Slices",
                   "Pepperoni",
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-3 text-charcoal/70">
