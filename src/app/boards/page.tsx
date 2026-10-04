@@ -82,7 +82,7 @@ export default function BoardsPage() {
 
               {/* Cheeses */}
               <p className="text-gold-dark tracking-[0.2em] uppercase text-xs mb-3">
-                Cheeses — Choose 3
+                Cheeses — Choose 2
               </p>
               <div className="grid grid-cols-2 gap-3 mb-6">
                 {[
